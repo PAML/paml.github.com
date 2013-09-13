@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Sean Rowe 9/13/2013 -->
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>TransferGuard Sample Messages</title>
+  <style type='text/css'>
+	.tooltip {
+   			display: inline;
+    		position: relative;
+			
+			color: #d55537;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		
+		.tooltip:hover:after {
+    		background: #333;
+    		background: rgba(0,0,0,.8);
+    		border-radius: 5px;
+    		bottom: 26px;
+    		color: #fff;
+    		content: attr(tooltip);
+    		left: 20%;
+    		padding: 5px 15px;
+    		position: absolute;
+    		z-index: 98;
+    		width: 250px;
+			white-space: normal;
+		}
+		
+		.tooltip:hover:before {
+    		border: solid;
+    		border-color: #333 transparent;
+    		border-width: 6px 6px 0 6px;
+    		bottom: 20px;
+    		content: "";
+    		left: 50%;
+    		position: absolute;
+    		z-index: 99;
+		}
+  </style>
+
+</head>
+<body>
+
+<h1>Sample ER7 Messages</h1>
+<h3>Sample ER7 Order Messages</h3>
+PlaceBase64Order requires an ER7 formatted message (see below) base64 encoded.
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;"><a href="#MSH" class="tooltip" tooltip="MSH - Message Header Segment">MSH</a>|^~\&|<a href="#MSH.3.1" class="tooltip" tooltip="MSH:3.1 - PAML Site ID.  This must match the client SSL certficate used to access the TransferGuard Web Service.">7000</a>|<a href="#MSH.4.1" class="tooltip" tooltip="MSH:4.1 - Client or Account Name (Sending Facility)">DrSmith</a>|<a href="#MSH.5.1" class="tooltip" tooltip="MSH:5.1 - Receiving Application">1101</a>|<a href="#MSH.6.1" class="tooltip" tooltip="MSH:6.1 - Receiving Facility">PAML</a>|<a href="#MSH.7.1" class="tooltip" tooltip="MSH:7.1 - Date/Time of Message">20121204105753</a>||<a href="#MSH.9.1" class="tooltip" tooltip="MSH:9.1 - Message Type">ORM</a>^<a href="#MSH.9.2" class="tooltip" tooltip="MSH:9.2 - Message Type">O01</a>^<a href="#MSH.9.3" class="tooltip" tooltip="MSH:9.3 - Message Type">ORM_O01</a>|<a href="#MSH.10" class="tooltip" tooltip="MSH:10 - Message Control Identifier">42513186:13838e5a5ba:-1be8</a>|<a href="#MSH.11.1" class="tooltip" tooltip="MSH:11.1 - Processing Identifier">P</a>|<a href="#MSH.12.1.1" class="tooltip" tooltip="MSH:12.1.1 - HL7 Message Version">2.5</a>|
+<a href="#PID" class="tooltip" tooltip="PID - Patient Identification Segment">PID</a>|<a href="#PID.1" class="tooltip" tooltip="PID:1 - Segment Set ID">1</a>||<a href="#PID.3.1" class="tooltip" tooltip="PID:3.1 - Client Assigned Patient Identifier">0123456789</a>||<a href="#PID.5.1" class="tooltip" tooltip="PID:5.1 - Patient Last Name">PATIENT01</a>^<a href="#PID.5.2" class="tooltip" tooltip="PID:5.2 - Patient First Name">TEST</a>||<a href="#PID.7.1" class="tooltip" tooltip="PID:7.1 - Patient Date of Birth (DOB)">19700101</a>|<a href="#PID.8" class="tooltip" tooltip="PID:8 - Patient Gender">M</a>||<a href="#PID.10.1" class="tooltip" tooltip="PID:10.1 - Patient Race">ASA</a>|<a href="#PID.11.1" class="tooltip" tooltip="PID:11.1 - Patient Address">1234 Here Street</a>^^<a href="#PID.11.3" class="tooltip" tooltip="PID:11.3 - Patient City">Spokane</a>^<a href="#PID.11.4" class="tooltip" tooltip="PID:11.4 - Patient State">WA</a>^<a href="#PID.11.5" class="tooltip" tooltip="PID:11.5 - Patient Zip Code">99202</a>||<a href="#PID.13.1" class="tooltip" tooltip="PID:13.1 - Patient Area Code and Phone Number">(509) 555-1212</a>^^^<a href="#PID.13.4" class="tooltip" tooltip="PID:13.4 - Patient Email Address">jdoe@paml.com</a>|
+<a href="#PV1" class="tooltip" tooltip="PV1 - Patient Visit Segment">PV1</a>|<a href="#PV1.1.1" class="tooltip" tooltip="PV1:1.1 - Segment Set ID">1</a>||^^^<a href="#PV1.3.4" class="tooltip" tooltip="PV1:3.4 - Patient Location Facility">DrSmith</a>^^^<a href="#PV1.3.7" class="tooltip" tooltip="PV1:3.7 - Patient Location Building">Building1</a>^^<a href="#PV1.3.9" class="tooltip" tooltip="PV1:3.9 - Patient Location Description">Description</a>||||||||||||||||||||||||||||||||||||<a href="#PV1.39" class="tooltip" tooltip="PV1:39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a>|
+<a href="#ORC" class="tooltip" tooltip="ORC - Order Segment">ORC</a>|<a href="#ORC.1" class="tooltip" tooltip="ORC:1 - Order Control (Type)">NW</a>|<a href="#ORC.2.1" class="tooltip" tooltip="ORC:2.1 - Unique Test Order Number.  This value must match exactly the corresponding OBR.2.1 value.">123456</a>|||||||<a href="#ORC.9.1" class="tooltip" tooltip="ORC:9.1 - Date/Time of Order">20130607103421</a>|
+<a href="#OBR" class="tooltip" tooltip="OBR - Observation Request (Order Detail) Segment">OBR</a>|<a href="#OBR.1" class="tooltip" tooltip="OBR:1 - Segment Set ID">1</a>|<a href="#OBR.2.1" class="tooltip" tooltip="OBR:2.1 - Unique Test Order Number.  This value must match exactly the corresponding ORC.2.1 value.">123456</a>||<a href="#OBR.4.1" class="tooltip" tooltip="OBR:4.1 - Laboratory Test Order Code">80100.DA33</a>^<a href="#OBR.4.2" class="tooltip" tooltip="OBR:4.2 - Laboratory Order Code Description">DAT Apolipoprotein A</a>|<a href="#OBR.5" class="tooltip" tooltip="OBR:5 - Order Priority">R</a>||<a href="#OBR.7.1" class="tooltip" tooltip="OBR:7.1 - Start Date/Time of Order">201307220009</a>|<a href="#OBR.8.1" class="tooltip" tooltip="OBR:8.1 - End Date/Time of Order">0</a>||||||||<a href="#OBR.16.1.1" class="tooltip" tooltip="OBR:16.1.1 - Ordering Provider Identifier (NPI)">1234567890</a>|||<a href="#OBR.19" class="tooltip" tooltip="OBR:19 - Billing Indicator">C</a>|
+</span></td></tr></table>
+
+<h3>Sample Base64 Encoded ER7 Order Message</h3>
+
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;">TVNIfF5+XCZ8NzAwMHxEUlNNSVRIfElDQU58UEFNTHwyMDEyMTIwNDEwNTc1My44NjUtMDgwMHw0
+TVNIfF5+XCZ8NzAwMHxEUlNNSVRIfDExMDF8UEFNTHwyMDEyMTIwNDEwNTc1My44NjUtMDgwMHx8
+T1JNXk8wMV5PUk1fTzAxfDQyNTEzMTg2OjEzODM4ZTVhNWJhOi0xYmU4fFB8Mi41fA0KUElEfDF8
+fDAxMjM0NTY3ODl8fFBBVElFTlQwMV5URVNUfHwxOTcwMDEwMXxNfHxBU0F8MTIzNCBIZXJlIFN0
+cmVldF5eU3Bva2FuZV5XQV45OTIwMnx8KDUwOSkgNTU1LTEyMTJeXl5qZG9lQHBhbWwuY29tfA0K
+UFYxfDF8fF5eXkRyU21pdGheXl5CdWlsZGluZzFeXkRlc2NyaXB0aW9ufHx8fHx8fHx8fHx8fHx8
+fHx8fHx8fHx8fHx8fHx8fHx8fHx8NjU0MzIxfA0KT1JDfE5XfDEyMzQ1Nnx8fHx8fHwyMDEzMDYw
+NzEwMzQyMXwNCk9CUnwxfDEyMzQ1Nnx8ODAxMDAuREEzM15EQVQgQXBvbGlwb3Byb3RlaW4gQXxS
+fHwyMDEzMDcyMjAwMDl8MHx8fHx8fHx8MTIzNDU2Nzg5MHx8fEN8
+</span></td></tr></table>
+
+<h3>Sample SOAP Envelope (PlaceBase64Order)</h3>
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;"><span style="color: #000080; font-weight: bold">&lt;soapenv:Envelope </span><span style="color: #4070a0">xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span> <span style="color: #4070a0">xmlns:ws=&quot;http://hl7.paml.com/ws/&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;soapenv:Header/&gt;</span>
+	<span style="color: #000080; font-weight: bold">&lt;soapenv:Body&gt;</span>
+		<span style="color: #000080; font-weight: bold">&lt;ws:PlaceBase64Order&gt;</span>
+			<span style="color: #000080; font-weight: bold">&lt;ws:orderRequest&gt;</span>
+				<span style="color: #000080; font-weight: bold">&lt;ws:HL7Message&gt;</span><span style="color: #d55537;">[[Base64 Encoded ER7 Message]]</span><span style="color: #000080; font-weight: bold">&lt;/ws:HL7Message&gt;</span>
+				<span style="color: #000080; font-weight: bold">&lt;ws:SiteID&gt;</span><span style="color: #d55537;">[[PAML Site Identifier]]</span><span style="color: #000080; font-weight: bold">&lt;/ws:SiteID&gt;</span>
+			<span style="color: #000080; font-weight: bold">&lt;/ws:orderRequest&gt;</span>
+		<span style="color: #000080; font-weight: bold">&lt;/ws:PlaceBase64Order&gt;</span>
+	<span style="color: #000080; font-weight: bold">&lt;/soapenv:Body&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;/soapenv:Envelope&gt;</span>
+</span></td></tr></table>
+
+<h3>Sample ER7 Result Message</h3>
+GetBase64Results will return an array of base64 encoded ER7 formatted messages.
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+  6
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;"><a href="#MSH" class="tooltip" tooltip="MSH - Message Header Segment">MSH</a>|^~\&|<a href="#MSH.3.1" class="tooltip" tooltip="MSH:3.1 - Sending Application.  PAML Assigned Interface Identifier (Laboratory)">1101</a>|<a href="#MSH.4.1" class="tooltip" tooltip="MSH:4.1 - Sending Facility (Laboratory)">PAML</a>|<a href="#MSH.5.1" class="tooltip" tooltip="MSH.5.1 - Receiving Application. PAML Assigned Interface Identifier (Client)">7000</a>|<a href="#MSH.6.1" class="tooltip" tooltip="MSH:6.1 - Receiving Facility (Client)">DrSmith</a>|<a href="#MSH.7.1" class="tooltip" tooltip="MSH:7.1 - Date/Time of Message">20130909133853</a>|<a href="#MSH.8" class="tooltip" tooltip="MSH:8 - Security">-5d4a2583:140c1764186:-255e</a>|<a href="#MSH.9.1" class="tooltip" tooltip="MSH:9.1 - Message Type">ORU</a>^<a href="#MSH.9.2" class="tooltip" tooltip="MSH:9.2 - Message Type">R01</a>^<a href="#MSH.9.3" class="tooltip" tooltip="MSH:9.3 - Message Type">ORU_R01</a>|<a href="#MSH.10" class="tooltip" tooltip="MSH:10 - Message Control Identifier">-5d4a2583:140c1764186:-255e</a>|<a href="#MSH.11.1" class="tooltip" tooltip="MSH:11.1 - Processing Identifier">P</a>|<a href="#MSH.12.1.1" class="tooltip" tooltip="MSH:12.1.1 - HL7 Message Version">2.5</a>|
+<a href="#PID" class="tooltip" tooltip="PID - Patient Identification Segment">PID</a>|<a href="#PID.1" class="tooltip" tooltip="PID:1 - Segment Set ID">1</a>||<a href="#PID.3.1" class="tooltip" tooltip="PID:3.1 - Client Assigned Patient Identifier">0123456789</a>||<a href="#PID.5.1" class="tooltip" tooltip="PID:5.1 - Patient Last Name">PATIENT01</a>^<a href="#PID.5.2" class="tooltip" tooltip="PID:5.2 - Patient First Name">TEST</a>||<a href="#PID.7.1" class="tooltip" tooltip="PID:7.1 - Patient Date of Birth (DOB)">19700101</a>|<a href="#PID.8" class="tooltip" tooltip="PID:8 - Patient Gender">M</a>||<a href="#PID.10.1" class="tooltip" tooltip="PID:10.1 - Patient Race">ASA</a>|<a href="#PID.11.1" class="tooltip" tooltip="PID:11.1 - Patient Address">1234 Here Street</a>^^<a href="#PID.11.3" class="tooltip" tooltip="PID:11.3 - Patient City">Spokane</a>^<a href="#PID.11.4" class="tooltip" tooltip="PID:11.4 - Patient State">WA</a>^<a href="#PID.11.5" class="tooltip" tooltip="PID:11.5 - Patient Zip Code">99202</a>||<a href="#PID.13.1" class="tooltip" tooltip="PID:13.1 - Patient Area Code and Phone Number">(509)555-1212</a>^^^^^<a href="#PID.13.6" class="tooltip" tooltip="PID:13.6 - Patient Area Code">509</a>^<a href="#PID.13.7" class="tooltip" tooltip="PID:13.7 - Patient Phone Number">5551212</a>|||||<a href="#PID.18.1" class="tooltip" tooltip="PID:18.1 - Laboratory Assigned Patient Identifier">EEPATIENT01</a>
+<a href="#PV1" class="tooltip" tooltip="PV1 - Patient Visit Segment">PV1</a>|<a href="#PV1.1.1" class="tooltip" tooltip="PV1:1.1 - Segment Set ID">1</a>||^^^<a href="#PV1.3.4" class="tooltip" tooltip="PV1:3.4 - Patient Location Facility">DrSmith</a>^^^<a href="#PV1.3.7" class="tooltip" tooltip="PV1:3.7 - Patient Location Building">Building1</a>^^<a href="#PV1.3.9" class="tooltip" tooltip="PV1:3.9 - Patient Location Description">Description</a>||||<a href="#PV1.7.1.1" class="tooltip" tooltip="PV1:7.1.1 - Attending Provider Identifier">1234567890</a>^<a href="#PV1.7.2.1" class="tooltip" tooltip="PV1:7.2.1 - Attending Provider Description">DR SMITH</a>||||||||||||||||||||||||||||||||<a href="#PV1.39" class="tooltip" tooltip="PV1:39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a>|
+<a href="#ORC" class="tooltip" tooltip="ORC - Order Segment">ORC</a>|<a href="#ORC.1" class="tooltip" tooltip="ORC:1 - Order Control (Type)">RE</a>|<a href="#ORC.2.1" class="tooltip" tooltip="ORC:2.1 - Unique Test Order Number.  This value must match exactly the corresponding OBR.2.1 value.">123456</a>|||||||<a href="#ORC.9.1" class="tooltip" tooltip="ORC:9.1 - Date/Time of Order">20130607103421</a>|
+<a href="#OBR" class="tooltip" tooltip="OBR - Observation Request (Order Detail) Segment">OBR</a>|<a href="#OBR.1" class="tooltip" tooltip="OBR:1 - Segment Set ID">1</a>|<a href="#OBR.2.1" class="tooltip" tooltip="OBR:2.1 - Unique Test Order Number.  This value must match exactly the corresponding ORC.2.1 value.">123456</a>|<a href="#OBR.3.1" class="tooltip" tooltip="OBR:3.1 - Laboratory Accession Number">M1026954</a>|<a href="#OBR.4.1" class="tooltip" tooltip="OBR:4.1 - Laboratory Test Order Code">80100.DA33</a>^<a href="#OBR.4.2" class="tooltip" tooltip="OBR:4.2 - Laboratory Order Code Description">DAT Apolipoprotein A</a>|<a href="#OBR.5" class="tooltip" tooltip="OBR:5 - Order Priority">R</a>||<a href="#OBR.7.1" class="tooltip" tooltip="OBR:7.1 - Start Date/Time of Order">201309091313</a>|||||||||<a href="#OBR.16.1.1" class="tooltip" tooltip="OBR:16.1.1 - Ordering Provider Identifier (NPI)">1234567890</a>^<a href="#OBR.16.2.1" class="tooltip" tooltip="OBR:16.2.1 - Ordering Provider Name">DR SMITH</a>|||<a href="#OBR.19" class="tooltip" tooltip="OBR:19 - Billing Indicator">C</a>||||||<a href="#OBR.25" class="tooltip" tooltip="OBR:25 - Order Status">F</a>
+<a href="#OBX" class="tooltip" tooltip="OBX - Observation Segment">OBX</a>|<a href="#OBX.1" class="tooltip" tooltip="OBX:1 - Set ID">1</a>|<a href="#OBX.2" class="tooltip" tooltip="OBX:2 - Value Type">NM</a>|<a href="#OBX.3.1" class="tooltip" tooltip="OBX:3.1 - Observation Identifier (LOINC)">1869-7</a>^<a href="#OBX.3.2" class="tooltip" tooltip="OBX:3.2 - Observation (Result) Description">Apolipoprotein A 1</a>||<a href="#OBX.5" class="tooltip" tooltip="OBX:5 - Observation Value (Result)">154</a>|<a href="#OBX.6.1" class="tooltip" tooltip="OBX:6.1 - Units">mg/dL</a>|<a href="#OBX.7" class="tooltip" tooltip="OBX:7 - Reference Range">79-169</a>||||<a href="#OBX.11" class="tooltip" tooltip="OBX:11 - Observation (Result) Status">F</a>||||<a href="#OBX.15.1" class="tooltip" tooltip="OBX.15.1 - Performing Laboratory Identifier (CLIA)">50D0661605</a>^<a href="#OBX.15.2" class="tooltip" tooltip="OBX.15.2 - Performing Laboratory Name and Address">PAML, 110 W. Cliff Dr, Spokane, WA 99204</a>
+</span></td></tr></table>
+
+<h1>Sample v2.xml Messages</h1>
+<h3>Sample v2.xml Order Message</h3>
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre;"><span style="color: #000080; font-weight: bold">&lt;ORM_O01</span> <span style="color: #4070a0">xmlns=&quot;urn:hl7-org:v2xml&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;MSH&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.1&gt;</span>|<span style="color: #000080; font-weight: bold">&lt;/MSH.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.2&gt;</span>^~\&amp<span style="color: #000080; font-weight: bold">&lt;/MSH.2&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.3&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.3.1" class="tooltip" tooltip="MSH.3.1 - Sending Application. PAML Assigned Interface Identifier.">7000</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.3&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.4&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.4.1" class="tooltip" tooltip="MSH.4.1 - Sending Facility">DRSMITH</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.4&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.5&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.5.1" class="tooltip" tooltip="MSH.5.1 - Receiving Application. PAML Assigned Interface Identifier.">1101</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.5&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.6&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.6.1" class="tooltip" tooltip="MSH.6.1 - Receiving Facility">PAML</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.6&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.7&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#MSH.7.1" class="tooltip" tooltip="MSH.7.1 - Date/Time of Message">20121204105753.865-0800</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.7&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.9&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;MSG.1&gt;</span><a href="#MSH.9.1" class="tooltip" tooltip="MSH.9.1 - Message Type">ORM</a><span style="color: #000080; font-weight: bold">&lt;/MSG.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;MSG.2&gt;</span><a href="#MSH.9.2" class="tooltip" tooltip="MSH.9.2 - Message Type">O01</a><span style="color: #000080; font-weight: bold">&lt;/MSG.2&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;MSG.3&gt;</span><a href="#MSH.9.3" class="tooltip" tooltip="MSH.9.3 - Message Type">ORM_O01</a><span style="color: #000080; font-weight: bold">&lt;/MSG.3&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.9&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.10&gt;</span><a href="#MSH.10" class="tooltip" tooltip="MSH.10 - Message Control Identifier">42513186:13838e5a5ba:-1be8</a><span style="color: #000080; font-weight: bold">&lt;/MSH.10&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.11&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PT.1&gt;</span><a href="#MSH.11.1" class="tooltip" tooltip="MSH.11.1 - Processing Identifier">P</a><span style="color: #000080; font-weight: bold">&lt;/PT.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.11&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.12&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;VID.1&gt;</span><a href="#MSH.12.1.1" class="tooltip" tooltip="MSH.12.1.1 - HL7 Message Version">2.5</a><span style="color: #000080; font-weight: bold">&lt;/VID.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.12&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;/MSH&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;ORM_O01.PATIENT&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;PID&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.1&gt;</span><a href="#PID.1" class="tooltip" tooltip="PID.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/PID.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;CX.1&gt;</span><a href="#PID.3.1" class="tooltip" tooltip="PID.3.1 - Client Assigned Patient Identifier">0123456789</a><span style="color: #000080; font-weight: bold">&lt;/CX.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID.3&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XPN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;FN.1&gt;</span><a href="#PID.5.1" class="tooltip" tooltip="PID.5.1 - Patient Last Name">PATIENT01</a><span style="color: #000080; font-weight: bold">&lt;/FN.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/XPN.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XPN.2&gt;</span><a href="#PID.5.2" class="tooltip" tooltip="PID.5.2 - Patient First Name">TEST</a><span style="color: #000080; font-weight: bold">&lt;/XPN.2&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID.5&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.7&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#PID.7.1" class="tooltip" tooltip="PID.7.1 - Patient Date of Birth (DOB)">19700101</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID.7&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.8&gt;</span><a href="#PID.8" class="tooltip" tooltip="PID.8 - Patient Gender">M</a><span style="color: #000080; font-weight: bold">&lt;/PID.8&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.10&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#PID.10.1" class="tooltip" tooltip="PID.10.1 - Patient Race">ASA</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID.10&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.11&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;SAD.1&gt;</span><a href="#PID.11.1" class="tooltip" tooltip="PID.11.1 - Patient Address">1234 Here Street</a><span style="color: #000080; font-weight: bold">&lt;/SAD.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/XAD.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.3&gt;</span><a href="#PID.11.3" class="tooltip" tooltip="PID.11.3 - City">Spokane</a><span style="color: #000080; font-weight: bold">&lt;/XAD.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.4&gt;</span><a href="#PID.11.4" class="tooltip" tooltip="PID.11.4 - State">WA</a><span style="color: #000080; font-weight: bold">&lt;/XAD.4&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.5&gt;</span><a href="#PID.11.5" class="tooltip" tooltip="PID.11.5 - Zip Code">99202</a><span style="color: #000080; font-weight: bold">&lt;/XAD.5&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID.11&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID.13&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XTN.1&gt;</span><a href="#PID.13.1" class="tooltip" tooltip="PID.13.1 - Patient Area Code and Phone Number">(509) 555-1212</a><span style="color: #000080; font-weight: bold">&lt;/XTN.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XTN.4&gt;</span><a href="#PID.13.4" class="tooltip" tooltip="PID.13.4 - Patient Email Address">jdoe@paml.com</a><span style="color: #000080; font-weight: bold">&lt;/XTN.4&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID.13&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/PID&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;ORM_O01.PATIENT_VISIT&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PV1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PV1.1&gt;</span><a href="#PV1.1.1" class="tooltip" tooltip="PV1.1.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/PV1.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PV1.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PL.4&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#PV1.3.4" class="tooltip" tooltip="PV1.3.4 - Patient Location Facility">DrSmith</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/PL.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PL.7&gt;</span><a href="#PV1.3.7" class="tooltip" tooltip="PV1.3.7 - Patient Location Building">Building1</a><span style="color: #000080; font-weight: bold">&lt;/PL.7&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PL.9&gt;</span><a href="#PV1.3.9" class="tooltip" tooltip="PV1.3.9 - Patient Location Description">Description</a><span style="color: #000080; font-weight: bold">&lt;/PL.9&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PV1.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PV1.39&gt;</span><a href="#PV1.39" class="tooltip" tooltip="PV1.39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a><span style="color: #000080; font-weight: bold">&lt;/PV1.39&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PV1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.PATIENT_VISIT&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.PATIENT&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;ORM_O01.ORDER&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;ORC&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORC.1&gt;</span><a href="#ORC.1" class="tooltip" tooltip="ORC.1 - Order Control (Type)">NW</a><span style="color: #000080; font-weight: bold">&lt;/ORC.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORC.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;EI.1&gt;</span><a href="#ORC.2.1" class="tooltip" tooltip="ORC.2.1 - Unique Test Order Number. This value must match exactly the corresponding OBR.2.1 value.">123456</a><span style="color: #000080; font-weight: bold">&lt;/EI.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORC.2&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORC.9&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#ORC.9.1" class="tooltip" tooltip="ORC.9.1 - Date/Time of Order">20130607103421</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORC.9&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/ORC&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;ORM_O01.ORDER_DETAIL&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;OBR&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.1&gt;</span><a href="#OBR.1" class="tooltip" tooltip="OBR.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/OBR.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;EI.1&gt;</span><a href="#OBR.2.1" class="tooltip" tooltip="OBR.2.1 - Unique Test Order Number. This value must match exactly the corresponding ORC.2.1 value.">123456</a><span style="color: #000080; font-weight: bold">&lt;/EI.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#OBR.4.1" class="tooltip" tooltip="OBR.4.1 - Laboratory Test Order Code">80100.DA33</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span><a href="#OBR.4.2" class="tooltip" tooltip="OBR.4.2 - Laboratory Order Code Description">DAT Apolipoprotein A</a><span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.4&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.5&gt;</span><a href="#OBR.5" class="tooltip" tooltip="OBR.5 - Order Priority">R</a><span style="color: #000080; font-weight: bold">&lt;/OBR.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.7&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#OBR.7.1" class="tooltip" tooltip="OBR.7.1 - Start Date/Time of Order">201307220009</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.7&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.8&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#OBR.8.1" class="tooltip" tooltip="OBR.8.1 - End Date/Time of Order">0</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.8&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.16&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XCN.1&gt;</span><a href="#OBR.16.1.1" class="tooltip" tooltip="OBR.16.1.1 - Ordering Provider Identifier">1234567890</a><span style="color: #000080; font-weight: bold">&lt;/XCN.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.16&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.19&gt;</span><a href="#OBR.19" class="tooltip" tooltip="OBR.19 - Billing Indicator">C</a><span style="color: #000080; font-weight: bold">&lt;/OBR.19&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/OBR&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.ORDER_DETAIL&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.ORDER&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;/ORM_O01&gt;</span>
+</span></td></tr></table>
+
+<h3>Sample SOAP Envelope (PlaceOrder)</h3>
+<!-- HTML generated using hilite.me -->
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;"><span style="color: #000080; font-weight: bold">&lt;soapenv:Envelope </span><span style="color: #4070a0">xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span> <span style="color: #4070a0">xmlns:ws=&quot;http://hl7.paml.com/ws/&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
+	<span style="color: #000080; font-weight: bold">&lt;soapenv:Header/&gt;</span>
+	<span style="color: #000080; font-weight: bold">&lt;soapenv:Body&gt;</span>
+		<span style="color: #000080; font-weight: bold">&lt;ws:PlaceOrder&gt;</span>
+			<span style="color: #000080; font-weight: bold">&lt;ws:orderRequest&gt;</span>
+				<span style="color: #000080; font-weight: bold">&lt;ws:HL7Message&gt;&lt;![CDATA[</span><span style="color: #d55537;">[[v2.Xml Encoded Order Message]]</span><span style="color: #000080; font-weight: bold">]]&gt;&lt;/ws:HL7Message&gt;</span>
+				<span style="color: #000080; font-weight: bold">&lt;ws:SiteID&gt;</span><span style="color: #d55537;">[[PAML Site Identifier]]</span><span style="color: #000080; font-weight: bold">&lt;/ws:SiteID&gt;</span>
+			<span style="color: #000080; font-weight: bold">&lt;/ws:orderRequest&gt;</span>
+		<span style="color: #000080; font-weight: bold">&lt;/ws:PlaceOrder&gt;</span>
+	<span style="color: #000080; font-weight: bold">&lt;/soapenv:Body&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;/soapenv:Envelope&gt;</span>
+</span></td></tr></table>
+
+<h3>Sample v2.xml Result Message</h3>
+<table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre;"><span style="color: #000080; font-weight: bold">&lt;ORU_R01</span> <span style="color: #4070a0">xmlns=&quot;urn:hl7-org:v2xml&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;MSH&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.1&gt;</span>|<span style="color: #000080; font-weight: bold">&lt;/MSH.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.2&gt;</span>^~\<span style="color: #000080; font-weight: bold">&amp;amp;</span><span style="color: #000080; font-weight: bold">&lt;/MSH.2&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.3&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.3.1" class="tooltip" tooltip="MSH.3.1 - Sending Application. Laboratory Assigned Interface Identifier.">1101</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.3&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.4&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.4.1" class="tooltip" tooltip="MSH.4.1 - Sending Facility">PAML</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.4&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.5&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.5.1" class="tooltip" tooltip="MSH.5.1 - Receiving Application. Laboratory Assigned Interface Identifier.">7000</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.5&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.6&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#MSH.6.1" class="tooltip" tooltip="MSH.6.1 - Receiving Facility">DrSmith</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.6&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.7&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#MSH.7.1" class="tooltip" tooltip="MSH.7.1 - Date/Time of Message">20130909133853</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.7&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.8&gt;</span><a href="#MSH.8" class="tooltip" tooltip="MSH.8 - Security">-5d4a2583:140c1764186:-255e</a><span style="color: #000080; font-weight: bold">&lt;/MSH.8&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.9&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;MSG.1&gt;</span><a href="#MSH.9.1" class="tooltip" tooltip="MSH.9.1 - Message Type">ORU</a><span style="color: #000080; font-weight: bold">&lt;/MSG.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;MSG.2&gt;</span><a href="#MSH.9.2" class="tooltip" tooltip="MSH.9.2 - Message Type">R01</a><span style="color: #000080; font-weight: bold">&lt;/MSG.2&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;MSG.3&gt;</span><a href="#MSH.9.3" class="tooltip" tooltip="MSH.9.3 - Message Type">ORU_R01</a><span style="color: #000080; font-weight: bold">&lt;/MSG.3&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.9&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.10&gt;</span><a href="#MSH.10" class="tooltip" tooltip="MSH.10 - Message Control Identifier">-5d4a2583:140c1764186:-255e</a><span style="color: #000080; font-weight: bold">&lt;/MSH.10&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.11&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PT.1&gt;</span><a href="#MSH.11.1" class="tooltip" tooltip="MSH.11.1 - Processing Identifier">P</a><span style="color: #000080; font-weight: bold">&lt;/PT.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.11&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;MSH.12&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;VID.1&gt;</span><a href="#MSH.12.1.1" class="tooltip" tooltip="MSH.12.1.1 - HL7 Message Version">2.5</a><span style="color: #000080; font-weight: bold">&lt;/VID.1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/MSH.12&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;/MSH&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;ORU_R01.PATIENT_RESULT&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;ORU_R01.PATIENT&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;PID&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.1&gt;</span><a href="#PID.1" class="tooltip" tooltip="PID.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/PID.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CX.1&gt;</span><a href="#PID.3.1" class="tooltip" tooltip="PID.3.1 - Client Assigned Patient Identifier">0123456789</a><span style="color: #000080; font-weight: bold">&lt;/CX.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.5&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XPN.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;FN.1&gt;</span><a href="#PID.5.1" class="tooltip" tooltip="PID.5.1 - Patient Last Name">PATIENT01</a><span style="color: #000080; font-weight: bold">&lt;/FN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/XPN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XPN.2&gt;</span><a href="#PID.5.2" class="tooltip" tooltip="PID.5.2 - Patient First Name">TEST</a><span style="color: #000080; font-weight: bold">&lt;/XPN.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.7&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#PID.7.1" class="tooltip" tooltip="PID.7.1 - Patient Date of Birth (DOB)">19700101</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.7&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.8&gt;</span><a href="#PID.8" class="tooltip" tooltip="PID.8 - Patient Gender">M</a><span style="color: #000080; font-weight: bold">&lt;/PID.8&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.10&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#PID.10.1" class="tooltip" tooltip="PID.10.1 - Patient Race">ASA</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.10&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.11&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;SAD.1&gt;</span><a href="#PID.11.1" class="tooltip" tooltip="PID.11.1 - Patient Address">1234 Here Street</a><span style="color: #000080; font-weight: bold">&lt;/SAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/XAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.3&gt;</span><a href="#PID.11.3" class="tooltip" tooltip="PID.11.3 - City">Spokane</a><span style="color: #000080; font-weight: bold">&lt;/XAD.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.4&gt;</span><a href="#PID.11.4" class="tooltip" tooltip="PID.11.4 - State">WA</a><span style="color: #000080; font-weight: bold">&lt;/XAD.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.5&gt;</span><a href="#PID.11.5" class="tooltip" tooltip="PID.11.5 - Zip Code">99202</a><span style="color: #000080; font-weight: bold">&lt;/XAD.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.11&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.13&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XTN.1&gt;</span><a href="#PID.13.1" class="tooltip" tooltip="PID.13.1 - Patient Area Code and Phone Number">(509)555-1212</a><span style="color: #000080; font-weight: bold">&lt;/XTN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XTN.6&gt;</span><a href="#PID.13.6" class="tooltip" tooltip="PID.13.6 - Patient Area Code">509</a><span style="color: #000080; font-weight: bold">&lt;/XTN.6&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XTN.7&gt;</span><a href="#PID.13.7" class="tooltip" tooltip="PID.13.7 - Patient Phone Number">5551212</a><span style="color: #000080; font-weight: bold">&lt;/XTN.7&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.13&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PID.18&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CX.1&gt;</span><a href="#PID.18.1" class="tooltip" tooltip="PID.18.1 - Laboratory Assigned Patient Identifier">EEPATIENT01</a><span style="color: #000080; font-weight: bold">&lt;/CX.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PID.18&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/PID&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORU_R01.VISIT&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PV1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PV1.1&gt;</span><a href="#PV1.1.1" class="tooltip" tooltip="PV1.1.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/PV1.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PV1.3&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;PL.4&gt;</span>
+                            <span style="color: #000080; font-weight: bold">&lt;HD.1&gt;</span><a href="#PV1.3.4" class="tooltip" tooltip="PV1.3.4 - Patient Location Facility">DrSmith</a><span style="color: #000080; font-weight: bold">&lt;/HD.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;/PL.4&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;PL.7&gt;</span><a href="#PV1.3.7" class="tooltip" tooltip="PV1.3.7 - Patient Location Building">Building1</a><span style="color: #000080; font-weight: bold">&lt;/PL.7&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;PL.9&gt;</span><a href="#PV1.3.9" class="tooltip" tooltip="PV1.3.9 - Patient Location Description">Description</a><span style="color: #000080; font-weight: bold">&lt;/PL.9&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/PV1.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PV1.7&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;XCN.1&gt;</span><a href="#PV1.7.1.1" class="tooltip" tooltip="PV1.7.1.1 - Attending Provider Identifier">1234567890</a><span style="color: #000080; font-weight: bold">&lt;/XCN.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;XCN.2&gt;</span>
+                            <span style="color: #000080; font-weight: bold">&lt;FN.1&gt;</span><a href="#PV1.7.2.1" class="tooltip" tooltip="PV1.7.2.1 - Attending Provider Description">DR SMITH</a><span style="color: #000080; font-weight: bold">&lt;/FN.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;/XCN.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/PV1.7&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;PV1.39&gt;</span><a href="#PV1.39" class="tooltip" tooltip="PV1.39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a><span style="color: #000080; font-weight: bold">&lt;/PV1.39&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/PV1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORU_R01.VISIT&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/ORU_R01.PATIENT&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;ORU_R01.ORDER_OBSERVATION&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORC&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;ORC.1&gt;</span><a href="#ORC.1" class="tooltip" tooltip="ORC.1 - Order Control (Type)">RE</a><span style="color: #000080; font-weight: bold">&lt;/ORC.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;ORC.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;EI.1&gt;</span><a href="#ORC.2.1" class="tooltip" tooltip="ORC.2.1 - Unique Test Order Number">123456</a><span style="color: #000080; font-weight: bold">&lt;/EI.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/ORC.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;ORC.9&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#ORC.9.1" class="tooltip" tooltip="ORC.9.1 - Date/Time of Order">20130607103421</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/ORC.9&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORC&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;OBR&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.1&gt;</span><a href="#OBR.1" class="tooltip" tooltip="OBR.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/OBR.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;EI.1&gt;</span><a href="#OBR.2.1" class="tooltip" tooltip="OBR.2.1 - Unique Test Order Number">123456</a><span style="color: #000080; font-weight: bold">&lt;/EI.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;EI.1&gt;</span><a href="#OBR.3.1" class="tooltip" tooltip="OBR.3.1 - Laboratory Accession Number">M1026954</a><span style="color: #000080; font-weight: bold">&lt;/EI.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#OBR.4.1" class="tooltip" tooltip="OBR.4.1 - Laboratory Test Order Code">80100.DA33</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span><a href="#OBR.4.2" class="tooltip" tooltip="OBR.4.2 - Laboratory Order Code Description">DAT Apolipoprotein A</a><span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.4&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.5&gt;</span><a href="#OBR.5" class="tooltip" tooltip="OBR.5 - Order Priority">R</a><span style="color: #000080; font-weight: bold">&lt;/OBR.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.7&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#OBR.7.1" class="tooltip" tooltip="OBR.7.1 - Start Date/Time of Order">201309091313</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.7&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.16&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XCN.1&gt;</span><a href="#OBR.16.1.1" class="tooltip" tooltip="OBR.16.1.1 - Ordering Provider Identifier">1234567890</a><span style="color: #000080; font-weight: bold">&lt;/XCN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XCN.2&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;FN.1&gt;</span><a href="#OBR.16.2.1" class="tooltip" tooltip="OBR.16.2.1 - Ordering Provider Description">DR SMITH</a><span style="color: #000080; font-weight: bold">&lt;/FN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/XCN.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBR.16&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.19&gt;</span><a href="#OBR.19" class="tooltip" tooltip="OBR.19 - Billing Indicator">C</a><span style="color: #000080; font-weight: bold">&lt;/OBR.19&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBR.25&gt;</span><a href="#OBR.25" class="tooltip" tooltip="OBR.25 - Order Status">F</a><span style="color: #000080; font-weight: bold">&lt;/OBR.25&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/OBR&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORU_R01.OBSERVATION&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBX&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.1&gt;</span><a href="#OBX.1" class="tooltip" tooltip="OBX.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/OBX.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.2&gt;</span><a href="#OBX.2" class="tooltip" tooltip="OBX.2 - Value Type">NM</a><span style="color: #000080; font-weight: bold">&lt;/OBX.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.3&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#OBX.3.1" class="tooltip" tooltip="OBX.3.1 - Observation Identifier (LOINC Code)">1869-7</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span><a href="#OBX.3.2" class="tooltip" tooltip="OBX.3.2 - Observation (Result) Description">Apolipoprotein A 1</a><span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/OBX.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.5&gt;</span><a href="#OBX.5" class="tooltip" tooltip="OBX.5 - Observation Value (Result)">154</a><span style="color: #000080; font-weight: bold">&lt;/OBX.5&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.6&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#OBX.6.1" class="tooltip" tooltip="OBX.6.1 - Units">mg/dL</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/OBX.6&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.7&gt;</span><a href="#OBX.7" class="tooltip" tooltip="OBX.7 - Reference Range">79-169</a><span style="color: #000080; font-weight: bold">&lt;/OBX.7&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.11&gt;</span><a href="#OBX.11" class="tooltip" tooltip="OBX.11 - Observation (Result) Status">F</a><span style="color: #000080; font-weight: bold">&lt;/OBX.11&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.15&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span><a href="#OBX.15.1" class="tooltip" tooltip="OBX.15.1 - Performing Laboratory Identifier (CLIA Code)">50D0661605</a><span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span><a href="#OBX.15.2" class="tooltip" tooltip="OBX.15.2 - Performing Laboratory Name and Address">PAML, 110 W. Cliff Dr, Spokane, WA 99204</a><span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/OBX.15&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBX&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORU_R01.OBSERVATION&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/ORU_R01.ORDER_OBSERVATION&gt;</span>
+    <span style="color: #000080; font-weight: bold">&lt;/ORU_R01.PATIENT_RESULT&gt;</span>
+<span style="color: #000080; font-weight: bold">&lt;/ORU_R01&gt;</span>
+</span></td></tr></table>
+
+<hr>
+
+<div id="MSH"/><h3>MSH - Message Header</h3>
+<div id="MSH.3.1"/><h3>MSH.3.1 - Sending Application. PAML Assigned Interface Identifier.</h3>
+The 4-digit interface identifier assigned by PAML.
+
+For orders, you must use the PAML assigned identifier that is included in your client certificate and the SOAP message.
+
+For results, this will be the PAML assigned identifier for the laboratory.
+<div id="MSH.4.1"/><h3>MSH.4.1 - Sending Facility</h3>
+Should be alphanumeric only.
+
+For orders, this should be the client or account name.  This value will be returned in MSH.6.1 in the result message(s).
+
+For results, this will be the laboratory facility.
+<div id="MSH.5.1"/><h3>MSH.5.1 - Receiving Application. PAML Assigned Interface Identifier.</h3>
+The 4-digit interface identifier assigned by PAML.
+
+For orders, you must use the PAML assigned identifier for the laboratory.
+
+For results, this will be the PAML assigned identifier that is included in your client certificate and the SOAP message.
+<div id="MSH.6.1"/><h3>MSH.6.1 - Receiving Facility</h3>
+Should be alphanumeric only.
+
+For orders, this should "PAML".
+
+For results, this will be the value provided in MSH4.1 in the order message.
+<div id="MSH.7.1"/><h3>MSH.7.1 - Date/Time of Message</h3>
+CCYYMMDDHHMMSS (4-digit year, month, day, hour, minute, second)
+<div id="MSH.8"/><h3>MSH.8</h3>
+
+<div id="MSH.9.1"/><h3>MSH.9.1 - Message Type</h3>
+For orders, this should be: "ORM"
+<div id="MSH.9.2"/><h3>MSH.9.2 - Message Type</h3>
+For orders, this should be: "O01"
+<div id="MSH.9.3"/><h3>MSH.9.3 - Message Type</h3>
+For orders, this should be: "ORM_O01"
+<div id="MSH.10"/><h3>MSH.10 - Message Control Identifier</h3>
+Unique message identifier.
+<div id="MSH.11.1"/><h3>MSH.11.1 - Processing Identifier</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>D</td>
+	<td>Debugging</td>
+	</tr>
+	<tr>
+	<td>P</td>
+	<td>Production</td>
+	</tr>
+	<tr>
+	<td>T</td>
+	<td>Training</td>
+	</tr>
+	</table>
+<div id="MSH.12.1.1"/><h3>MSH.12.1.1 - HL7 Message Version</h3>
+Should be: 2.5
+<div id="PID"/><h3>PID - Patient Identification</h3>
+<div id="PID.1"/><h3>PID.1 - Set ID</h3>
+This should be: 1
+<div id="PID.3.1"/><h3>PID.3.1 - Client Assigned Patient Identifier</h3>
+<div id="PID.5.1"/><h3>PID.5.1 - Patient Last Name</h3>
+<div id="PID.5.2"/><h3>PID.5.2 - Patient First Name</h3>
+<div id="PID.7.1"/><h3>PID.7.1 - Patient Date of Birth (DOB)</h3>
+CCYYMMDD (4-digit year, month, day)
+<div id="PID.8"/><h3>PID.8 - Patient Gender</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>M</td>
+	<td>Male</td>
+	</tr>
+	<tr>
+	<td>F</td>
+	<td>Female</td>
+	</tr>
+	<tr>
+	<td>U</td>
+	<td>Unknown</td>
+	</tr>
+	</table>
+<div id="PID.10.1"/><h3>PID.10.1 - Patient Race</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>AF</td>
+	<td>Black (AF)</td>
+	</tr>
+	<tr>
+	<td>ASA</td>
+	<td>Asian</td>
+	</tr>
+	<tr>
+	<td>CAU</td>
+	<td>Caucasian</td>
+	</tr>
+	<tr>
+	<td>HIS</td>
+	<td>Hispanic</td>
+	</tr>
+	<tr>
+	<td>NAT</td>
+	<td>Native American</td>
+	</tr>
+	<tr>
+	<td>OTH</td>
+	<td>Other</td>
+	</tr>
+	</table>
+
+<div id="PID.11.1"/><h3>PID.11.1 - Patient Address</h3>
+<div id="PID.11.3"/><h3>PID.11.3 - City</h3>
+<div id="PID.11.4"/><h3>PID.11.4 - State</h3>
+<div id="PID.11.5"/><h3>PID.11.5 - Zip Code</h3>
+<div id="PID.13.1"/><h3>PID.13.1 - Patient Area Code and Phone Number</h3>
+Example: (509) 555-1212
+<div id="PID.13.4"/><h3>PID.13.4 - Patient Email Address</h3>
+<div id="PID.13.6"/><h3>PID.13.6 - Patient Area Code</h3>
+<div id="PID.13.7"/><h3>PID.13.7 - Patient Phone Number</h3>
+
+<div id="PID.18.1"/><h3>PID.18.1 - Laboratory Assigned Patient Identifier</h3>
+<div id="PV1"/><h3>PV1 - Patient Visit</h3>
+<div id="PV1.1.1"/><h3>PV1.1.1 - Set ID</h3>
+This should be: 1
+<div id="PV1.3.4"/><h3>PV1.3.4 - Patient Location Facility</h3>
+
+<div id="PV1.3.7"/><h3>PV1.3.7 - Patient Location Building</h3>
+
+<div id="PV1.3.9"/><h3>PV1.3.9 - Patient Location Description</h3>
+
+<div id="PV1.7.1.1"/><h3>PV1.7.1.1 - Attending Provider Identifier</h3>
+This value will be set equal to OBR.16.1.1 on result messages, if no value is provided on the order.
+
+<div id="PV1.7.2.1"/><h3>PV1.7.2.1 - Attending Provider Description</h3>
+This value will be set equal to OBR.16.2.1 on result messages, if no value is provided on the order.
+
+<div id="PV1.39"/><h3>PV1.39 - Laboratory Assigned Patient Visit Facility Identifier</h3>
+
+<div id="ORC"/><h3>ORC - Order</h3>
+The ORC and OBR segments are used together to represent an order.  Each test order should have corresponding ORC and OBR segments.
+<div id="ORC.1"/><h3>ORC.1 - Order Control (Type)</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>NW</td>
+	<td>New Order</td>
+	</tr>
+	<tr>
+	<td>CA</td>
+	<td>Cancel</td>
+	</tr>
+	</table>
+<div id="ORC.2.1"/><h3>ORC.2.1 - Unique Test Order Number</h3>
+Unique test order identifier.  This value must match exactly the corresponding OBR.2.1 value.
+<div id="ORC.9.1"/><h3>ORC.9.1 - Date/Time of Order</h3>
+CCYYMMDDHHMMSS (4-digit year, month, day, hour, minute, second)
+<div id="OBR"/><h3>OBR - Observation Request (Order Detail)</h3>
+The OBR and ORC segments are used together to represent an order.  Each test order should have corresponding OBR and ORC segments.
+<div id="OBR.1"/><h3>OBR.1 - Set ID</h3>
+Should be: 1
+<div id="OBR.2.1"/><h3>OBR.2.1 - Unique Test Order Number</h3>
+Unique test order identifier.  This value must match exactly the corresponding ORC.2.1 value.
+<div id="OBR.3.1"/><h3>OBR.3.1 - Laboratory Accession Number</h3>
+Laboratory accession number.
+<div id="OBR.4.1"/><h3>OBR.4.1 - Laboratory Test Order Code</h3>
+See PAML Test Directory for a listing of order codes and additional details.
+<div id="OBR.4.2"/><h3>OBR.4.2 - Laboratory Order Code Description</h3>
+See PAML Test Directory for a listing of order codes and additional details.
+<div id="OBR.5"/><h3>OBR.5 - Order Priority</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>S</td>
+	<td>Stat - 4 hour turn-around requested</td>
+	</tr>
+	<tr>
+	<td>S2</td>
+	<td>Stat 2 - 12 hour turn-around requested</td>
+	</tr>
+	<tr>
+	<td>R</td>
+	<td>Routine</td>
+	</tr>
+	</table>
+<div id="OBR.7.1"/><h3>OBR.7.1 - Start Date/Time of Order</h3>
+<div id="OBR.8.1"/><h3>OBR.8.1 - End Date/Time of Order</h3>
+<div id="OBR.16.1.1"/><h3>OBR.16.1.1 - Ordering Provider Identifier</h3>
+NPI or account number of the provider ordering the test.  The account number should only be used if the test is being ordered directly by the patient or the NPI number of the ordering provider is not available.
+<div id="OBR.16.2.1"/><h3>OBR.16.2.1 - Ordering Provider Description</h3>
+
+<div id="OBR.19"/><h3>OBR.19 - Billing Indicator</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>T</td>
+	<td>Third Party.  <u>Requires IN1, GT1 and DG1 segments.</u></td>
+	</tr>
+	<tr>
+	<td>P</td>
+	<td>Patient</td>
+	</tr>
+	<tr>
+	<td>C</td>
+	<td>Client</td>
+	</tr>
+	</table>
+<div id="OBR.25"/><h3>OBR.25 - Order Status</h3>
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>P</td>
+	<td>Partial result.</u></td>
+	</tr>
+	<tr>
+	<td>F</td>
+	<td>Final result.</u></td>
+	</tr>
+	</table>
+
+<div id="OBX"/><h3>OBX - Observation Segment</h3>
+
+<div id="OBX.1"/><h3>OBX.1 - Set ID</h3>
+
+<div id="OBX.2"/><h3>OBX.2 - Value Type</h3>
+
+<div id="OBX.3.1"/><h3>OBX.3.1 - Observation Identifier (LOINC)</h3>
+LOINC result code.
+
+<div id="OBX.3.2"/><h3>OBX.3.2 - Observation (Result) Description</h3>
+Result description.
+
+<div id="OBX.5"/><h3>OBX.5 - Observation Value (Result)</h3>
+Result value.
+
+<div id="OBX.6.1"/><h3>OBX.6.1 - Units</h3>
+Result units.
+
+<div id="OBX.7"/><h3>OBX.7 - Reference Range</h3>
+Result reference range.
+
+<div id="OBX.8"/><h3>OBX.8 - Abnormal Flags</h3>
+Result abnormal flags.
+
+<div id="OBX.11"/><h3>OBX.11 - Observation (Result) Status</h3>
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>F</td>
+	<td>Final.  Final results should replace preliminary results and should indicate that the result is final.</td>
+	</tr>
+	<tr>
+	<td>P</td>
+	<td>Preliminary.  Preliminary results should indicate that the result is preliminary.</td>
+	</tr>
+	<tr>
+	<td>C</td>
+	<td>Corrected.  Corrected results should replace previous final and preliminary results and should indicate that the result is corrected.</td>
+	</tr>
+	</table>
+
+<div id="OBX.15.1"/><h3>OBX.15.1 - Performing Laboratory Identifier (CLIA Code)</h3>
+Performing laboratory identifier.  This is the CLIA number of the performing laboratory.
+
+<div id="OBX.15.2"/><h3>OBX.15.2 - Performing Laboratory Name and Address</h3>
+Performing laboratory name and address.
+	
+<br/><br/><br/><br/><br/><br/><br/>
+
+
+</body>
+</html>
