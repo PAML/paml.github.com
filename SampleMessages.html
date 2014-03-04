@@ -45,6 +45,90 @@
 <body>
 
 <h1>Sample ER7 Messages</h1>
+<h3>Order Message Structure</h3>
+<p>Repeating segments are listed in { }, optional segments are listed in [].</p>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="100" align="left">Segment</th>
+    <th width="100" align="left">Usage</th>
+    <th width="100" align="left">Cardinality</th>
+    <th align="left">Description</th>
+  </tr>
+  <tr>
+    <td>MSH</td>
+    <td>&#160;</td>
+    <td>[1..1]</td>
+    <td>Message Header</td>
+  </tr>
+  <tr>
+    <td>PID</td>
+    <td>Required</td>
+    <td>[1..1]</td>
+    <td>Patient Identification</td>
+  </tr>
+  <tr>
+    <td>PV1</td>
+    <td>Required</td>
+    <td>[1..1]</td>
+    <td>Patient Visit</td>
+  </tr>
+  <tr>
+    <td>[IN1]</td>
+    <td>Optional</td>
+    <td>[0..3]</td>
+    <td>Insurance</td>
+  </tr>
+  <tr>
+    <td>[GT1]</td>
+    <td>Conditional</td>
+    <td>[0..1]</td>
+    <td>Guarantor - required when IN1 is included</td>
+  </tr>
+  <tr>
+    <td>{</td>
+    <td>Required</td>
+    <td>[1..*]</td>
+    <td>--- Order Begin</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp; ORC</td>
+    <td>Required</td>
+    <td>[1..1]</td>
+    <td>Order Common</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp; OBR</td>
+    <td>Required</td>
+    <td>[1..1]</td>
+    <td>Order</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp; [{NTE}]</td>
+    <td>Optional</td>
+    <td>[0..*]</td>
+    <td>Notes and comments</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp; {DG1}</td>
+    <td>Required</td>
+    <td>[1..*]</td>
+    <td>Diagnosis</td>
+  </tr>
+  <tr>
+    <td>&nbsp;&nbsp; [{OBX}]</td>
+    <td>Optional</td>
+    <td>[0..*]</td>
+    <td>Observation - Ask at Order Entry (AOE)
+    Questions</td>
+  </tr>
+  <tr>
+    <td>}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>--- Order End</td>
+  </tr>
+</table>
+
 <h3>Sample ER7 Order Messages</h3>
 PlaceBase64Order requires an ER7 formatted message (see below) base64 encoded.
 <table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
@@ -52,11 +136,21 @@ PlaceBase64Order requires an ER7 formatted message (see below) base64 encoded.
   3
   4
   5
+  6
+  7
+  8
+  9
+ 10
 </span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;"><a href="#MSH" class="tooltip" tooltip="MSH - Message Header Segment">MSH</a>|^~\&|<a href="#MSH.3.1" class="tooltip" tooltip="MSH:3.1 - PAML Site ID.  This must match the client SSL certficate used to access the TransferGuard Web Service.">7000</a>|<a href="#MSH.4.1" class="tooltip" tooltip="MSH:4.1 - Client or Account Name (Sending Facility)">DrSmith</a>|<a href="#MSH.5.1" class="tooltip" tooltip="MSH:5.1 - Receiving Application">1101</a>|<a href="#MSH.6.1" class="tooltip" tooltip="MSH:6.1 - Receiving Facility">PAML</a>|<a href="#MSH.7.1" class="tooltip" tooltip="MSH:7.1 - Date/Time of Message">20121204105753</a>||<a href="#MSH.9.1" class="tooltip" tooltip="MSH:9.1 - Message Type">ORM</a>^<a href="#MSH.9.2" class="tooltip" tooltip="MSH:9.2 - Message Type">O01</a>^<a href="#MSH.9.3" class="tooltip" tooltip="MSH:9.3 - Message Type">ORM_O01</a>|<a href="#MSH.10" class="tooltip" tooltip="MSH:10 - Message Control Identifier">42513186:13838e5a5ba:-1be8</a>|<a href="#MSH.11.1" class="tooltip" tooltip="MSH:11.1 - Processing Identifier">P</a>|<a href="#MSH.12.1.1" class="tooltip" tooltip="MSH:12.1.1 - HL7 Message Version">2.5</a>|
-<a href="#PID" class="tooltip" tooltip="PID - Patient Identification Segment">PID</a>|<a href="#PID.1" class="tooltip" tooltip="PID:1 - Segment Set ID">1</a>||<a href="#PID.3.1" class="tooltip" tooltip="PID:3.1 - Client Assigned Patient Identifier">0123456789</a>||<a href="#PID.5.1" class="tooltip" tooltip="PID:5.1 - Patient Last Name">PATIENT01</a>^<a href="#PID.5.2" class="tooltip" tooltip="PID:5.2 - Patient First Name">TEST</a>||<a href="#PID.7.1" class="tooltip" tooltip="PID:7.1 - Patient Date of Birth (DOB)">19700101</a>|<a href="#PID.8" class="tooltip" tooltip="PID:8 - Patient Gender">M</a>||<a href="#PID.10.1" class="tooltip" tooltip="PID:10.1 - Patient Race">ASA</a>|<a href="#PID.11.1" class="tooltip" tooltip="PID:11.1 - Patient Address">1234 Here Street</a>^^<a href="#PID.11.3" class="tooltip" tooltip="PID:11.3 - Patient City">Spokane</a>^<a href="#PID.11.4" class="tooltip" tooltip="PID:11.4 - Patient State">WA</a>^<a href="#PID.11.5" class="tooltip" tooltip="PID:11.5 - Patient Zip Code">99202</a>||<a href="#PID.13.1" class="tooltip" tooltip="PID:13.1 - Patient Area Code and Phone Number">(509) 555-1212</a>^^^<a href="#PID.13.4" class="tooltip" tooltip="PID:13.4 - Patient Email Address">jdoe@paml.com</a>|
-<a href="#PV1" class="tooltip" tooltip="PV1 - Patient Visit Segment">PV1</a>|<a href="#PV1.1.1" class="tooltip" tooltip="PV1:1.1 - Segment Set ID">1</a>||^^^<a href="#PV1.3.4" class="tooltip" tooltip="PV1:3.4 - Patient Location Facility">DrSmith</a>^^^<a href="#PV1.3.7" class="tooltip" tooltip="PV1:3.7 - Patient Location Building">Building1</a>^^<a href="#PV1.3.9" class="tooltip" tooltip="PV1:3.9 - Patient Location Description">Description</a>||||||||||||||||||||||||||||||||||||<a href="#PV1.39" class="tooltip" tooltip="PV1:39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a>|
-<a href="#ORC" class="tooltip" tooltip="ORC - Order Segment">ORC</a>|<a href="#ORC.1" class="tooltip" tooltip="ORC:1 - Order Control (Type)">NW</a>|<a href="#ORC.2.1" class="tooltip" tooltip="ORC:2.1 - Unique Test Order Number.  This value must match exactly the corresponding OBR.2.1 value.">123456</a>|||||||<a href="#ORC.9.1" class="tooltip" tooltip="ORC:9.1 - Date/Time of Order">20130607103421</a>|
-<a href="#OBR" class="tooltip" tooltip="OBR - Observation Request (Order Detail) Segment">OBR</a>|<a href="#OBR.1" class="tooltip" tooltip="OBR:1 - Segment Set ID">1</a>|<a href="#OBR.2.1" class="tooltip" tooltip="OBR:2.1 - Unique Test Order Number.  This value must match exactly the corresponding ORC.2.1 value.">123456</a>||<a href="#OBR.4.1" class="tooltip" tooltip="OBR:4.1 - Laboratory Test Order Code">80100.DA33</a>^<a href="#OBR.4.2" class="tooltip" tooltip="OBR:4.2 - Laboratory Order Code Description">DAT Apolipoprotein A</a>|<a href="#OBR.5" class="tooltip" tooltip="OBR:5 - Order Priority">R</a>||<a href="#OBR.7.1" class="tooltip" tooltip="OBR:7.1 - Start Date/Time of Order">201307220009</a>|<a href="#OBR.8.1" class="tooltip" tooltip="OBR:8.1 - End Date/Time of Order">0</a>||||||||<a href="#OBR.16.1.1" class="tooltip" tooltip="OBR:16.1.1 - Ordering Provider Identifier (NPI)">1234567890</a>|||<a href="#OBR.19" class="tooltip" tooltip="OBR:19 - Billing Indicator">C</a>|
+<a href="#PID" class="tooltip" tooltip="PID - Patient Identification Segment">PID</a>|<a href="#PID.1" class="tooltip" tooltip="PID:1 - PID Set ID">1</a>||<a href="#PID.3.1" class="tooltip" tooltip="PID:3.1 - Client Assigned Patient Identifier">0123456789</a>||<a href="#PID.5.1" class="tooltip" tooltip="PID:5.1 - Patient Last Name">PATIENT01</a>^<a href="#PID.5.2" class="tooltip" tooltip="PID:5.2 - Patient First Name">TEST</a>||<a href="#PID.7.1" class="tooltip" tooltip="PID:7.1 - Patient Date of Birth (DOB)">19700101</a>|<a href="#PID.8" class="tooltip" tooltip="PID:8 - Patient Gender">M</a>||<a href="#PID.10.1" class="tooltip" tooltip="PID:10.1 - Patient Race">ASA</a>|<a href="#PID.11.1" class="tooltip" tooltip="PID:11.1 - Patient Address">1234 Here Street</a>^^<a href="#PID.11.3" class="tooltip" tooltip="PID:11.3 - Patient City">Spokane</a>^<a href="#PID.11.4" class="tooltip" tooltip="PID:11.4 - Patient State">WA</a>^<a href="#PID.11.5" class="tooltip" tooltip="PID:11.5 - Patient Zip Code">99202</a>||<a href="#PID.13.1" class="tooltip" tooltip="PID:13.1 - Patient Area Code and Phone Number">(509) 555-1212</a>^^^<a href="#PID.13.4" class="tooltip" tooltip="PID:13.4 - Patient Email Address">jdoe@paml.com</a>|
+<a href="#PV1" class="tooltip" tooltip="PV1 - Patient Visit Segment">PV1</a>|<a href="#PV1.1.1" class="tooltip" tooltip="PV1:1.1 - PV1 Set ID">1</a>||^^^<a href="#PV1.3.4" class="tooltip" tooltip="PV1:3.4 - Patient Location Facility">DrSmith</a>^^^<a href="#PV1.3.7" class="tooltip" tooltip="PV1:3.7 - Patient Location Building">Building1</a>^^<a href="#PV1.3.9" class="tooltip" tooltip="PV1:3.9 - Patient Location Description">Description</a>||||||||||||||||||||||||||||||||||||<a href="#PV1.39" class="tooltip" tooltip="PV1:39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a>|
+<a href="#IN1" class="tooltip" tooltip="IN1 - Insurance Segment">IN1</a>|<a href="#IN1.1" class="tooltip" tooltip="IN1.1 - IN1 Set ID">1</a>|<a href="#IN1.2.1" class="tooltip" tooltip="IN1.2.1 - Insurance Plan ID">PLANID</a>|<a href="#IN1.3.1" class="tooltip" tooltip="IN1.3.1 - Insurance Company ID">INSCOMPANYID</a>|<a href="#IN1.4.1" class="tooltip" tooltip="IN1.4.1 - Insurance Company Name">Insurance Company, Inc.</a>|<a href="#IN1.5.1" class="tooltip" tooltip="IN1.5.1 - Insurance Company Address">123 Ins Way</a>^^<a href="#IN1.5.3" class="tooltip" tooltip="IN1.5.3 - Insurance Company City">Spokane</a>^<a href="#IN1.5.4" class="tooltip" tooltip="IN1.5.4 - Insurance Company State">WA</a>^<a href="#IN1.5.5" class="tooltip" tooltip="IN1.5.5 - Insurance Company Zip Code">99202</a>|||<a href="#IN1.8" class="tooltip" tooltip="IN1.8 - Insurance Group Number">GROUP1234</a>|||<a href="#IN1.11.1" class="tooltip" tooltip="IN1.11.1 - Insured's Group Employer Name">Worldwide Widgets</a>||<a href="#IN1.13" class="tooltip" tooltip="IN1.13 - Insurance Plan Expiration Date">20141001</a>|||<a href="#IN1.16.1" class="tooltip" tooltip="IN1.16.1 - Last Name of Insured">PATIENT01</a>^<a href="#IN1.16.2" class="tooltip" tooltip="IN1.16.2 - First Name of Insured">TEST</a>|<a href="#IN1.17.1" class="tooltip" tooltip="IN1.17.1 - Insured's Relationship to Patient Identifier">SEL</a>^<a href="#IN1.17.2" class="tooltip" tooltip="IN1.17.2 - Insured's Relationship to Patient Description">Self</a>^<a href="#IN1.17.3" class="tooltip" tooltip="IN1.17.3 - Insured's Relationship to Patient Coding System">HL70063</a>|<a href="#IN1.18" class="tooltip" tooltip="IN1.18 - Insured's Date of Birth">19700101</a>|<a href="#IN1.19.1" class="tooltip" tooltip="IN1.19.1 - Insured's Address">1234 Here Street</a>^^<a href="#IN1.19.3" class="tooltip" tooltip="IN1.19.3 - Insured's City">Spokane</a>^<a href="#IN1.19.4" class="tooltip" tooltip="IN1.19.4 - Insured's State">WA</a>^<a href="#IN1.19.5" class="tooltip" tooltip="IN1.19.5 - Insured's Zip Code">99202</a>||||||||||||<a href="#IN1.31" class="tooltip" tooltip="IN1.31 - Insurance Type of Agreement Code">S</a>|||||<a href="#IN1.36" class="tooltip" tooltip="IN1.36 - Insurance Policy Number">POLICY1234</a>
+<a href="#GT1" class="tooltip" tooltip="GT1 - Guarantor Segment">GT1</a>|<a href="#GT1.1" class="tooltip" tooltip="GT1.1 - GT1 Set ID">1</a>||<a href="#GT1.3.1.1" class="tooltip" tooltip="GT1.3.1.1 - Guarantor Last Name">PATIENT01</a>^<a href="#GT1.3.2" class="tooltip" tooltip="GT1.3.2 - Guarantor First Name">TEST</a>||<a href="#GT1.5.1.1" class="tooltip" tooltip="GT1.5.1.1 - Guarantor Address">1234 Here Street</a>^^<a href="#GT1.5.3" class="tooltip" tooltip="GT1.5.3 - Guarantor City">Spokane</a>^<a href="#GT1.5.4" class="tooltip" tooltip="GT1.5.4 - Guarantor State">WA</a>^<a href="#GT1.5.5" class="tooltip" tooltip="GT1.5.5 - Guarantor Zip Code">99202</a>||||||||||||||||<a href="#GT1.21.1" class="tooltip" tooltip="GT1.21.1 - Guarantor Organization Name">Guarantor Organization Name</a>
+<a href="#ORC" class="tooltip" tooltip="ORC - Order Segment">ORC</a>|<a href="#ORC.1" class="tooltip" tooltip="ORC:1 - Order Control (Type)">NW</a>|<a href="#ORC.2.1" class="tooltip" tooltip="ORC:2.1 - Unique Test Order Number.  This value must match exactly the corresponding OBR.2.1 value.">123456</a>|||||||<a href="#ORC.9.1" class="tooltip" tooltip="ORC:9.1 - Date/Time of Order">20130607103421</a>||||<a href="#ORC.13.1" class="tooltip" tooltip="ORC.13.1 - Enterer's Location">I123O</a>
+<a href="#OBR" class="tooltip" tooltip="OBR - Observation Request (Order Detail) Segment">OBR</a>|<a href="#OBR.1" class="tooltip" tooltip="OBR:1 - OBR Set ID">1</a>|<a href="#OBR.2.1" class="tooltip" tooltip="OBR:2.1 - Unique Test Order Number.  This value must match exactly the corresponding ORC.2.1 value.">123456</a>||<a href="#OBR.4.1" class="tooltip" tooltip="OBR:4.1 - Laboratory Test Order Code">80100.DA33</a>^<a href="#OBR.4.2" class="tooltip" tooltip="OBR:4.2 - Laboratory Order Code Description">DAT Apolipoprotein A</a>|<a href="#OBR.5" class="tooltip" tooltip="OBR:5 - Order Priority">R</a>||<a href="#OBR.7.1" class="tooltip" tooltip="OBR:7.1 - Start Date/Time of Order">201307220009</a>|<a href="#OBR.8.1" class="tooltip" tooltip="OBR:8.1 - End Date/Time of Order">0</a>||||||||<a href="#OBR.16.1.1" class="tooltip" tooltip="OBR:16.1.1 - Ordering Provider Identifier (NPI)">1234567890</a>|||<a href="#OBR.19" class="tooltip" tooltip="OBR:19 - Billing Indicator">C</a>|
+<a href="#OBR.NTE" class="tooltip" tooltip="NTE - Notes and Comments Segment">NTE</a>|<a href="#OBR.NTE.1" class="tooltip" tooltip="NTE:1 - NTE Set ID">1</a>||<a href="#OBR.NTE.3" class="tooltip" tooltip="NTE:3 - Comment">Order Note</a>
+<a href="#DG1" class="tooltip" tooltip="DG1 - Diagnosis Segment">DG1</a>|<a href="#DG1.1" class="tooltip" tooltip="DG1.1 - DG1 Set ID">1</a>||<a href="#DG1.3.1" class="tooltip" tooltip="DG1.3.1 - Diagnosis Code">700</a>^<a href="#DG1.4" class="tooltip" tooltip="DG1.3.2 - Diagnosis Code Description">Diagnosis Description</a>^<a href="#DG1.3.3" class="tooltip" tooltip="DG1.3.3 - Diagnosis Code System">I9C</a>|||<a href="#DG1.6" class="tooltip" tooltip="DG1.6 - Diagnosis Type">F</a>|||||||||<a href="#DG1.15" class="tooltip" tooltip="DG1.15 - Diagnosis Priority">1</a>
+<a href="#OBR.OBX" class="tooltip" tooltip="OBX - Order Observation (Ask At Order Entry Question) Segment">OBX</a>|<a href="#OBR.OBX.1" class="tooltip" tooltip="OBX.1 - OBX Set ID">1</a>|<a href="#OBR.OBX.2" class="tooltip" tooltip="OBX.2 - Order Value Type">ST</a>|<a href="#OBR.OBX.3.1" class="tooltip" tooltip="OBX.3.1 - Order Observation Identifier">99199.Z56</a>^<a href="#OBR.OBX.3.2" class="tooltip" tooltip="OBX.3.2 - Order Observation Description">Specimen Source</a>||<a href="#OBR.OBX.5" class="tooltip" tooltip="OBX.5 - Order Observation Value">AOE Value</a>|<a href="#OBR.OBX.6.1" class="tooltip" tooltip="OBX.6.1 - Order Units">Units</a>|||||<a href="#OBR.OBX.11" class="tooltip" tooltip="OBX.11 - Order Observation Status">F</a>
 </span></td></tr></table>
 
 <h3>Sample Base64 Encoded ER7 Order Message</h3>
@@ -70,15 +164,35 @@ PlaceBase64Order requires an ER7 formatted message (see below) base64 encoded.
   7
   8
   9
-</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;">TVNIfF5+XCZ8NzAwMHxEUlNNSVRIfElDQU58UEFNTHwyMDEyMTIwNDEwNTc1My44NjUtMDgwMHw0
-TVNIfF5+XCZ8NzAwMHxEUlNNSVRIfDExMDF8UEFNTHwyMDEyMTIwNDEwNTc1My44NjUtMDgwMHx8
-T1JNXk8wMV5PUk1fTzAxfDQyNTEzMTg2OjEzODM4ZTVhNWJhOi0xYmU4fFB8Mi41fA0KUElEfDF8
-fDAxMjM0NTY3ODl8fFBBVElFTlQwMV5URVNUfHwxOTcwMDEwMXxNfHxBU0F8MTIzNCBIZXJlIFN0
-cmVldF5eU3Bva2FuZV5XQV45OTIwMnx8KDUwOSkgNTU1LTEyMTJeXl5qZG9lQHBhbWwuY29tfA0K
-UFYxfDF8fF5eXkRyU21pdGheXl5CdWlsZGluZzFeXkRlc2NyaXB0aW9ufHx8fHx8fHx8fHx8fHx8
-fHx8fHx8fHx8fHx8fHx8fHx8fHx8NjU0MzIxfA0KT1JDfE5XfDEyMzQ1Nnx8fHx8fHwyMDEzMDYw
-NzEwMzQyMXwNCk9CUnwxfDEyMzQ1Nnx8ODAxMDAuREEzM15EQVQgQXBvbGlwb3Byb3RlaW4gQXxS
-fHwyMDEzMDcyMjAwMDl8MHx8fHx8fHx8MTIzNDU2Nzg5MHx8fEN8
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre; color: #000080;">TVNIfF5+XCZ8NzAwMHxEclNtaXRofDExMDF8UEFNTHwyMDEyMTIwNDEwNTc1M3x8
+T1JNXk8wMV5PUk1fTzAxfDQyNTEzMTg2OjEzODM4ZTVhNWJhOi0xYmU4fFB8Mi41
+fA0KUElEfDF8fDAxMjM0NTY3ODl8fFBBVElFTlQwMV5URVNUfHwxOTcwMDEwMXxN
+fHxBU0F8MTIzNCBIZXJlIFN0cmVldF5eU3Bva2FuZV5XQV45OTIwMnx8KDUwOSkg
+NTU1LTEyMTJeXl5qZG9lQHBhbWwuY29tfA0KUFYxfDF8fF5eXkRyU21pdGheXl5C
+dWlsZGluZzFeXkRlc2NyaXB0aW9ufHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8
+fHx8fHx8fHx8NjU0MzIxfA0KSU4xfDF8UExBTklEfElOU0NPTVBBTllJRHxJbnN1
+cmFuY2UgQ29tcGFueSwgSW5jLnwxMjMgSW5zIFdheV5eU3Bva2FuZV5XQV45OTIw
+Mnx8fEdST1VQMTIzNHx8fFdvcmxkd2lkZSBXaWRnZXRzfHwyMDE0MTAwMXx8fFBB
+VElFTlQwMV5URVNUfFNFTF5TZWxmXkhMNzAwNjN8MTk3MDAxMDF8MTIzNCBIZXJl
+IFN0cmVldF5eU3Bva2FuZV5XQV45OTIwMnx8fHx8fHx8fHx8fFN8fHx8fFBPTElD
+WTEyMzQNCkdUMXwxfHxQQVRJRU5UMDFeVEVTVHx8MTIzNCBIZXJlIFN0cmVldF5e
+U3Bva2FuZV5XQV45OTIwMnx8fHx8fHx8fHx8fHx8fHxHdWFyYW50b3IgT3JnYW5p
+emF0aW9uIE5hbWUNCk9SQ3xOV3wxMjM0NTZ8fHx8fHx8MjAxMzA2MDcxMDM0MjF8
+fHx8STEyM08NCk9CUnwxfDEyMzQ1Nnx8ODAxMDAuREEzM15EQVQgQXBvbGlwb3By
+b3RlaW4gQXxSfHwyMDEzMDcyMjAwMDl8MHx8fHx8fHx8MTIzNDU2Nzg5MHx8fEN8
+DQpOVEV8MXx8T3JkZXIgTm90ZQ0KREcxfDF8fDcwMF5EaWFnbm9zaXMgRGVzY3Jp
+cHRpb25eSTlDfHx8Rnx8fHx8fHx8fDENCk9CWHwxfFNUfDk5MTk5Llo1Nl5TcGVj
+aW1lbiBTb3VyY2V8fEFPRSBWYWx1ZXxVbml0c3x8fHx8Rg==
 </span></td></tr></table>
 
 <h3>Sample SOAP Envelope (PlaceBase64Order)</h3>
@@ -124,6 +238,7 @@ GetBase64Results will return an array of base64 encoded ER7 formatted messages.
 
 <h1>Sample v2.xml Messages</h1>
 <h3>Sample v2.xml Order Message</h3>
+<!-- HTML generated using hilite.me -->
 <table style="background: #f0f0f0; overflow:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><tr><td width="20"><span style="margin: 0; line-height: 125%; font-family: monospace; display: block; white-space: pre;">  1
   2
   3
@@ -236,7 +351,111 @@ GetBase64Results will return an array of base64 encoded ER7 formatted messages.
 110
 111
 112
-113</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre;"><span style="color: #000080; font-weight: bold">&lt;ORM_O01</span> <span style="color: #4070a0">xmlns=&quot;urn:hl7-org:v2xml&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+</span></td><td width="1150"><span style="margin: 0; line-height: 125%;font-family: monospace; display: block; white-space: pre;"><span style="color: #000080; font-weight: bold">&lt;ORM_O01</span> <span style="color: #4070a0">xmlns=&quot;urn:hl7-org:v2xml&quot;</span><span style="color: #000080; font-weight: bold">&gt;</span>
     <span style="color: #000080; font-weight: bold">&lt;MSH&gt;</span>
         <span style="color: #000080; font-weight: bold">&lt;MSH.1&gt;</span>|<span style="color: #000080; font-weight: bold">&lt;/MSH.1&gt;</span>
         <span style="color: #000080; font-weight: bold">&lt;MSH.2&gt;</span>^~\&amp<span style="color: #000080; font-weight: bold">&lt;/MSH.2&gt;</span>
@@ -313,6 +532,77 @@ GetBase64Results will return an array of base64 encoded ER7 formatted messages.
                 <span style="color: #000080; font-weight: bold">&lt;PV1.39&gt;</span><a href="#PV1.39" class="tooltip" tooltip="PV1.39 - Laboratory Assigned Patient Visit Facility Identifier">654321</a><span style="color: #000080; font-weight: bold">&lt;/PV1.39&gt;</span>
             <span style="color: #000080; font-weight: bold">&lt;/PV1&gt;</span>
         <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.PATIENT_VISIT&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;ORM_O01.INSURANCE&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;IN1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.1&gt;</span>1<span style="color: #000080; font-weight: bold">&lt;/IN1.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span>PLANID<span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CX.1&gt;</span>INSCOMPANYID<span style="color: #000080; font-weight: bold">&lt;/CX.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XON.1&gt;</span>Insurance Company, Inc.<span style="color: #000080; font-weight: bold">&lt;/XON.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.4&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.5&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;SAD.1&gt;</span>123 Ins Way<span style="color: #000080; font-weight: bold">&lt;/SAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/XAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.3&gt;</span>Spokane<span style="color: #000080; font-weight: bold">&lt;/XAD.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.4&gt;</span>WA<span style="color: #000080; font-weight: bold">&lt;/XAD.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.5&gt;</span>99202<span style="color: #000080; font-weight: bold">&lt;/XAD.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.8&gt;</span>GROUP1234<span style="color: #000080; font-weight: bold">&lt;/IN1.8&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.11&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XON.1&gt;</span>Worldwide Widgets<span style="color: #000080; font-weight: bold">&lt;/XON.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.11&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.13&gt;</span>20141001<span style="color: #000080; font-weight: bold">&lt;/IN1.13&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.16&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XPN.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;FN.1&gt;</span>PATIENT01<span style="color: #000080; font-weight: bold">&lt;/FN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/XPN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XPN.2&gt;</span>TEST<span style="color: #000080; font-weight: bold">&lt;/XPN.2&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.16&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.17&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span>SEL<span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span>Self<span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.3&gt;</span>HL70063<span style="color: #000080; font-weight: bold">&lt;/CE.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.17&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.18&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span>19700101<span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.18&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.19&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;SAD.1&gt;</span>1234 Here Street<span style="color: #000080; font-weight: bold">&lt;/SAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/XAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.3&gt;</span>Spokane<span style="color: #000080; font-weight: bold">&lt;/XAD.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.4&gt;</span>WA<span style="color: #000080; font-weight: bold">&lt;/XAD.4&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;XAD.5&gt;</span>99202<span style="color: #000080; font-weight: bold">&lt;/XAD.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/IN1.19&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.31&gt;</span>S<span style="color: #000080; font-weight: bold">&lt;/IN1.31&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;IN1.36&gt;</span>POLICY1234<span style="color: #000080; font-weight: bold">&lt;/IN1.36&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/IN1&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.INSURANCE&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;GT1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;GT1.1&gt;</span>1<span style="color: #000080; font-weight: bold">&lt;/GT1.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;GT1.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XPN.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;FN.1&gt;</span>PATIENT01<span style="color: #000080; font-weight: bold">&lt;/FN.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/XPN.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XPN.2&gt;</span>TEST<span style="color: #000080; font-weight: bold">&lt;/XPN.2&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/GT1.3&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;GT1.5&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;SAD.1&gt;</span>1234 Here Street<span style="color: #000080; font-weight: bold">&lt;/SAD.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/XAD.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.3&gt;</span>Spokane<span style="color: #000080; font-weight: bold">&lt;/XAD.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.4&gt;</span>WA<span style="color: #000080; font-weight: bold">&lt;/XAD.4&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XAD.5&gt;</span>99202<span style="color: #000080; font-weight: bold">&lt;/XAD.5&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/GT1.5&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;GT1.21&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;XON.1&gt;</span>Guarantor Organization Name<span style="color: #000080; font-weight: bold">&lt;/XON.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/GT1.21&gt;</span>
+        <span style="color: #000080; font-weight: bold">&lt;/GT1&gt;</span>
     <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.PATIENT&gt;</span>
     <span style="color: #000080; font-weight: bold">&lt;ORM_O01.ORDER&gt;</span>
         <span style="color: #000080; font-weight: bold">&lt;ORC&gt;</span>
@@ -323,7 +613,10 @@ GetBase64Results will return an array of base64 encoded ER7 formatted messages.
             <span style="color: #000080; font-weight: bold">&lt;ORC.9&gt;</span>
                 <span style="color: #000080; font-weight: bold">&lt;TS.1&gt;</span><a href="#ORC.9.1" class="tooltip" tooltip="ORC.9.1 - Date/Time of Order">20130607103421</a><span style="color: #000080; font-weight: bold">&lt;/TS.1&gt;</span>
             <span style="color: #000080; font-weight: bold">&lt;/ORC.9&gt;</span>
-        <span style="color: #000080; font-weight: bold">&lt;/ORC&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORC.13&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;PL.1&gt;</span><a href="#ORC.13.1" class="tooltip" tooltip="ORC.13.1 - Enterer's Location">I123O</a><span style="color: #000080; font-weight: bold">&lt;/PL.1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORC.13&gt;</span>
+			<span style="color: #000080; font-weight: bold">&lt;/ORC&gt;</span>
         <span style="color: #000080; font-weight: bold">&lt;ORM_O01.ORDER_DETAIL&gt;</span>
             <span style="color: #000080; font-weight: bold">&lt;OBR&gt;</span>
                 <span style="color: #000080; font-weight: bold">&lt;OBR.1&gt;</span><a href="#OBR.1" class="tooltip" tooltip="OBR.1 - Set ID">1</a><span style="color: #000080; font-weight: bold">&lt;/OBR.1&gt;</span>
@@ -346,6 +639,35 @@ GetBase64Results will return an array of base64 encoded ER7 formatted messages.
                 <span style="color: #000080; font-weight: bold">&lt;/OBR.16&gt;</span>
                 <span style="color: #000080; font-weight: bold">&lt;OBR.19&gt;</span><a href="#OBR.19" class="tooltip" tooltip="OBR.19 - Billing Indicator">C</a><span style="color: #000080; font-weight: bold">&lt;/OBR.19&gt;</span>
             <span style="color: #000080; font-weight: bold">&lt;/OBR&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;NTE&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;NTE.1&gt;</span>1<span style="color: #000080; font-weight: bold">&lt;/NTE.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;NTE.3&gt;</span>Order Note<span style="color: #000080; font-weight: bold">&lt;/NTE.3&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/NTE&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;DG1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;DG1.1&gt;</span>1<span style="color: #000080; font-weight: bold">&lt;/DG1.1&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;DG1.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span>700<span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span>Diagnosis Description<span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;CE.3&gt;</span>I9C<span style="color: #000080; font-weight: bold">&lt;/CE.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/DG1.3&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;DG1.6&gt;</span>F<span style="color: #000080; font-weight: bold">&lt;/DG1.6&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;DG1.15&gt;</span>1<span style="color: #000080; font-weight: bold">&lt;/DG1.15&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/DG1&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;ORM_O01.OBSERVATION&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;OBX&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.1&gt;</span>1<span style="color: #000080; font-weight: bold">&lt;/OBX.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.2&gt;</span>ST<span style="color: #000080; font-weight: bold">&lt;/OBX.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.3&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span>99199.Z56<span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.2&gt;</span>Specimen Source<span style="color: #000080; font-weight: bold">&lt;/CE.2&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/OBX.3&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.5&gt;</span>AOE Value<span style="color: #000080; font-weight: bold">&lt;/OBX.5&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.6&gt;</span>
+                        <span style="color: #000080; font-weight: bold">&lt;CE.1&gt;</span>Units<span style="color: #000080; font-weight: bold">&lt;/CE.1&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;/OBX.6&gt;</span>
+                    <span style="color: #000080; font-weight: bold">&lt;OBX.11&gt;</span>F<span style="color: #000080; font-weight: bold">&lt;/OBX.11&gt;</span>
+                <span style="color: #000080; font-weight: bold">&lt;/OBX&gt;</span>
+            <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.OBSERVATION&gt;</span>
         <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.ORDER_DETAIL&gt;</span>
     <span style="color: #000080; font-weight: bold">&lt;/ORM_O01.ORDER&gt;</span>
 <span style="color: #000080; font-weight: bold">&lt;/ORM_O01&gt;</span>
@@ -699,7 +1021,7 @@ For results, this will be the PAML assigned identifier that is included in your 
 <div id="MSH.6.1"/><h3>MSH.6.1 - Receiving Facility</h3>
 Should be alphanumeric only.
 
-For orders, this should "PAML".
+For orders, this should be "PAML".
 
 For results, this will be the value provided in MSH4.1 in the order message.
 <div id="MSH.7.1"/><h3>MSH.7.1 - Date/Time of Message</h3>
@@ -811,6 +1133,9 @@ Example: (509) 555-1212
 <div id="PV1"/><h3>PV1 - Patient Visit</h3>
 <div id="PV1.1.1"/><h3>PV1.1.1 - Set ID</h3>
 This should be: 1
+
+<div id="PV1.3.1"/><h3>PV1.3.1 - </h3>
+
 <div id="PV1.3.4"/><h3>PV1.3.4 - Patient Location Facility</h3>
 
 <div id="PV1.3.7"/><h3>PV1.3.7 - Patient Location Building</h3>
@@ -825,7 +1150,199 @@ This value will be set equal to OBR.16.2.1 on result messages, if no value is pr
 
 <div id="PV1.39"/><h3>PV1.39 - Laboratory Assigned Patient Visit Facility Identifier</h3>
 
-<div id="ORC"/><h3>ORC - Order</h3>
+<div id="IN1"/><h2>IN1 - Insurance</h2>
+The IN1 segment contains insurance policy coverage information necessary to produce properly prorated and patient insurance bills.
+
+The IN1 segment is "C" (conditional) and is required OBR.19 is "T" (third-party bill).  If OBR.19 is not equal to "T", the IN1 segment should not be sent. When lab services are to be billed to a third party, information for a primary, secondary, and tertiary insurance may be provided (i.e., up to 3 IN1 segments may be sent). The information for the primary insurance plan must be reported in the first IN1 segment.
+
+<div id="IN1.1"/><h3>IN1.1 - Set ID</h3>
+Up to 3 occurrences of the IN1 segment cans be sent to accommodate a patient's primary, secondary and tertiary insurance information.  The information for the primary insurance plan must be reported in the first IN1 segment and the IN1.1 Set ID field must be populated with the value "1".  If information for a secondary or tertiary insurance is transmitted in the order, the IN1 Set ID field must be populated with a value of "2" and "3", respectively.
+
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>1</td>
+	<td>1st IN1 segment providing patient's primary insurance information</td>
+	</tr>
+	<tr>
+	<td>2</td>
+	<td>2nd IN1 segment providing patient's secondary insurance information</td>
+	</tr>
+	<tr>
+	<td>3</td>
+	<td>3rd IN1 segment providing patient's tertiary insurance information</td>
+	</tr>
+	</table>
+
+<div id="IN1.2.1"/><h3>IN1.2.1 - Insurance Plan ID</h3>
+The ordering system must use the Insurance Plan ID field to send an indicator of the specific type of policy that the ensured holds (e.g. PPO, HMO, etc.).  There is a great deal of variety in how insurance companies define the format for their plan IDs.
+<br/><br/>
+<b>Note:</b> See <a href="#IN1.36">IN1.36</a> Policy Number for information on sending the patient's unique subscriber ID.  See <a href="#IN1.3.1">IN1.3 Insurance Company ID</a> and <a href="#IN1.4">IN1.4 Insurance Company Name</a> for information on sending the identifier and name of the patient's insurance carrier.
+
+<div id="IN1.3.1"/><h3>IN1.3.1 - Insurance Company ID</h3>
+The ordering EHR system must provide the identifier of the patient’s insurance company. This identifier may be the lab’s proprietary identifier, the ordering systems proprietary identifier, or an insurance company identifier from a third party intermediary (e.g., a clearinghouse).  Despite the name of this component, the actual insurance company identifier may be an alphanumeric text string, not just a numeric identifier.  See <a href="http://billingcodes.paml.com/">http://billingcodes.paml.com/</a> for a list of valid Insurance Company Identifiers.
+
+<div id="IN1.4.1"/><h3>IN1.4.1 - Insurance Company Name</h3>
+The ordering system must include the name of the third-party payer/insurance company when the lab test is billed to a third-party. Only the Organization Name component (IN1.4.1) must be populated to indicate the name of the insurance company.
+
+<div id="IN1.5.1"/><h3>IN1.5.1 - Insurance Company Address</h3>
+The ordering system must include the address of the patient's insurance carrier when the lab test is billed to a third-party.  Only a single insurance company address may be sent.
+
+<div id="IN1.5.3"/><h3>IN1.5.3 - Insurance Company City</h3>
+Insurance Company city.
+
+<div id="IN1.5.4"/><h3>IN1.5.4 - Insurance Company State</h3>
+Insurance Company state.
+
+<div id="IN1.5.5"/><h3>IN1.5.5 - Insurance Company Zip Code</h3>
+Insurance Company zip code.
+
+<div id="IN1.8"/><h3>IN1.8 - Insurance Group Number</h3>
+If a lab test is billed to a third-party payer, and the patient's insurance carrier has assigned a group number for the patient's coverage, and the ordering system has a record of the group number, the ordering system must send this group number in this field.
+
+<div id="IN1.11.1"/><h3>IN1.11.1 - Insured's Group Employer Name</h3>
+When an insurance claim is related to a workman’s compensation claim, the lab may need to provide the name of the employer providing the coverage for the workman’s compensation claim.  Only the Organization Name component (IN1.8.1) must be populated when indicating the employer name.
+<br/><br/>
+<b>Condition:</b> The IN1.8 Insured’s Group Employer Name is required when the IN1.31 Type of Agreement Code field is populated with the value "W", indicating that the insurer is providing coverage as part of a workman’s compensation claim. Otherwise, this field must be empty.
+
+<div id="IN1.13"/><h3>IN1.13 - Insurance Plan Expiration Date</h3>
+This field is optional.  If provided, it must confirm to the DT data type.
+
+<div id="IN1.16.1"/><h3>IN1.16.1 - Last Name of Insured</h3>
+The ordering system must include the name of the policy holder (subscriber) for the insurance policy when the lab test is billed to a third-party payer.  Both a first (IN1.16.2) and last name (IN1.16.1) must be provided at a minimum.
+
+<div id="IN1.16.2"/><h3>IN1.16.2 - First Name of Insured</h3>
+The ordering system must include the name of the policy holder (subscriber) for the insurance policy when the lab test is billed to a third-party payer.  Both a first (IN1.16.2) and last name (IN1.16.1) must be provided at a minimum.
+
+<div id="IN1.17.1"/><h3>IN1.17.1 - Insured's Relationship to Patient Identifier</h3>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>SEL</td>
+	<td>Self</td>
+	</tr>
+	<tr>
+	<td>SPO</td>
+	<td>Spouse</td>
+	</tr>
+	<tr>
+	<td>DEP</td>
+	<td>Dependent</td>
+	</tr>
+	</table>
+<div id="IN1.17.2"/><h3>IN1.17.2 - Insured's Relationship to Patient Description</h3>
+This description must match the value provided in IN1.17.1.
+<br/><br/>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>Self</td>
+	<td>Use when providing SEL in IN1.17.1.</td>
+	</tr>
+	<tr>
+	<td>Spouse</td>
+	<td>Use when providing SPO in IN1.17.1.</td>
+	</tr>
+	<tr>
+	<td>Dependent</td>
+	<td>Use when providing DEP in IN1.17.1.</td>
+	</tr>
+	</table>
+
+<div id="IN1.17.3"/><h3>IN1.17.3 - Insured's Relationship to Patient Coding System</h3>
+Must be "HL70063".
+
+<div id="IN1.18"/><h3>IN1.18 - Insured's Date of Birth</h3>
+If known, the ordering system, the subscribers' date of birth must be reported in this field when the lab test is billed to a third party.  The time of birth or time zone indicator must not be transmitted.
+<br/><br/>
+<b>Format:</b> YYYYMMDD
+
+<div id="IN1.19.1"/><h3>IN1.19.1 - Insured's Address</h3>
+Insured's street or mailing address.
+
+<div id="IN1.19.3"/><h3>IN1.19.3 - Insured's City</h3>
+Insured's city.
+
+<div id="IN1.19.4"/><h3>IN1.19.4 - Insured's State</h3>
+Insured's state.
+
+<div id="IN1.19.5"/><h3>IN1.19.5 - Insured's Zip Code</h3>
+Insured's zip code.
+
+<div id="IN1.31"/><h3>IN1.31 - Insurance Type of Agreement Code</h3>
+If an Insurance company is providing coverage for a patient as part of a workman’s compensation claim and the ordering system is aware of this fact, the ordering system must populate this field with a value of "W" (Workman’s compensation). This flag informs the performing lab that the insurance information transmitted in the current IN1 segment is covering the patient under a special type of agreement and may not be the patient’s regular insurance provider.
+<br/><br/>
+	Accepted Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>S</td>
+	<td>Standard</td>
+	</tr>
+	<tr>
+	<td>U</td>
+	<td>Unified</td>
+	</tr>
+	<tr>
+	<td>M</td>
+	<td>Maternity</td>
+	</tr>
+	<tr>
+	<td>W</td>
+	<td>Workman's Compensation</td>
+	</tr>
+	</table>
+
+<div id="IN1.36"/><h3>IN1.36 - Insurance Policy Number</h3>
+The ordering system must include the policy number, Medicare ID, Medicaid ID, case number, or member ID of the insured person when the lab test is billed to a third-party. The actual content of this field depends on the type of third-party payer.
+
+<div id="GT1"/><h2>GT1 - Guarantor Segment</h2>
+The GT1 segment contains guarantor data for patient and insurance billing purposes (i.e., data about the person or the organization with financial responsibility for payment of a patient account).  The GT1 segment is required in all order messages.  Only a single instance of a GT1 segment is allowed in an order message.
+
+<div id="GT1.1"/><h3>GT1.1 - Guarantor Set ID</h3>
+This specification allows a maximum of 1 occurrence of the GT1 segment.  Hence, this field must be populated with the value "1".
+
+<div id="GT1.3.1.1"/><h3>GT1.3.1.1 - Guarantor Last Name</h3>
+If the guarantor for payment of lab services is an individual, the ordering system must provide that person's name when placing an order for lab service.  The first and last name of the guarantor must be sent at minimum.
+<br/><br/>
+If the guarantor is an organization rather than an individual, then this field must be empty and the GT1.21 Guarantor Organization Name must be populated instead.
+
+<div id="GT1.3.2"/><h3>GT1.3.2 - Guarantor First Name</h3>
+If the guarantor for payment of lab services is an individual, the ordering system must provide that person's name when placing an order for lab service.  The first (GT1.3.2) and last (GT1.3.1) name of the guarantor must be sent at minimum.
+<br/><br/>
+If the guarantor is an organization rather than an individual, then this field must be empty and the GT1.21 Guarantor Organization Name must be populated instead.
+
+<div id="GT1.5.1.1"/><h3>GT1.5.1.1 - Guarantor Address</h3>
+Guarantor street or mailing address.
+
+<div id="GT1.5.3"/><h3>GT1.5.3 - Guarantor City</h3>
+Guarantor city.
+
+<div id="GT1.5.4"/><h3>GT1.5.4 - Guarantor State</h3>
+Guarantor state.
+
+<div id="GT1.5.5"/><h3>GT1.5.5 - Guarantor Zip Code</h3>
+Guarantor zip code.
+
+<div id="GT1.21.1"/><h3>GT1.21.1 - Guarantor Organization Name</h3>
+If the guarantor for payment of lab service is an organization, the ordering system must provide that organization’s name when placing an order for lab service.  If the guarantor is an individual rather than an organization, then this field shall be empty and the GT1.3 Guarantor Name must be populated instead.
+
+<div id="ORC"/><h2>ORC - Order</h2>
 The ORC and OBR segments are used together to represent an order.  Each test order should have corresponding ORC and OBR segments.
 <div id="ORC.1"/><h3>ORC.1 - Order Control (Type)</h3>
 	Accepted Values:
@@ -844,15 +1361,18 @@ The ORC and OBR segments are used together to represent an order.  Each test ord
 	</tr>
 	</table>
 <div id="ORC.2.1"/><h3>ORC.2.1 - Unique Test Order Number</h3>
-Unique test order identifier.  This value must match exactly the corresponding OBR.2.1 value.
+Unique test order identifier.  This value must match exactly the corresponding <a href="#OBR.2.1">OBR.2.1</a> value.
 <div id="ORC.9.1"/><h3>ORC.9.1 - Date/Time of Order</h3>
 CCYYMMDDHHMMSS (4-digit year, month, day, hour, minute, second)
+<div id="ORC.13.1"/><h3>ORC.13.1 - Enterer's Location</h3>
+PAML Assigned Location of the person placing the order.  This field is optional and is used when the location of the person entering the order is required.  For example, when printing PAML generated specimen labels.
+
 <div id="OBR"/><h3>OBR - Observation Request (Order Detail)</h3>
 The OBR and ORC segments are used together to represent an order.  Each test order should have corresponding OBR and ORC segments.
 <div id="OBR.1"/><h3>OBR.1 - Set ID</h3>
 Should be: 1
 <div id="OBR.2.1"/><h3>OBR.2.1 - Unique Test Order Number</h3>
-Unique test order identifier.  This value must match exactly the corresponding ORC.2.1 value.
+Unique test order identifier.  This value must match exactly the corresponding <a href="#ORC.2.1">ORC.2.1</a> value.
 <div id="OBR.3.1"/><h3>OBR.3.1 - Laboratory Accession Number</h3>
 Laboratory accession number.
 <div id="OBR.4.1"/><h3>OBR.4.1 - Laboratory Test Order Code</h3>
@@ -879,6 +1399,7 @@ See PAML Test Directory for a listing of order codes and additional details.
 	<td>Routine</td>
 	</tr>
 	</table>
+<b>NOTE:</b> Turn-around times vary by test, testing location and other factors.  The requested order priority does not guarantee turn-around time.
 <div id="OBR.7.1"/><h3>OBR.7.1 - Start Date/Time of Order</h3>
 <div id="OBR.8.1"/><h3>OBR.8.1 - End Date/Time of Order</h3>
 <div id="OBR.16.1.1"/><h3>OBR.16.1.1 - Ordering Provider Identifier</h3>
@@ -920,33 +1441,202 @@ NPI or account number of the provider ordering the test.  The account number sho
 	<td>F</td>
 	<td>Final result.</u></td>
 	</tr>
+	<tr>
+	<td>C</td>
+	<td>Corrected result.</u></td>
+	</tr>
 	</table>
 
-<div id="OBX"/><h3>OBX - Observation Segment</h3>
+<div id="OBR.NTE"/><h2>NTE - Notes and Comments Segment</h2>
+The NTE segment is commonly used for sending notes and comments that accompany test orders.  Information transmitted in NTE segments is limited to general notes of a non-clinical nature.  Any supporting clinical information relevant to the performance of a test must be transmitted as Ask At Order Enter (AOE) question responses in OBX segments or in the designated DG1 and OBR segments.
 
-<div id="OBX.1"/><h3>OBX.1 - Set ID</h3>
+<div id="OBR.NTE.1"/><h3>NTE.1 - Notes and Comments Set ID</h3>
+An integer set identifier that increments by 1 for each NTE segment sent that relates to an ordered test (i.e. OBR). The first NTE segment related to an ordered test must have a Set ID value of "1". The set ID of the second NTE segment must have a value of "2", and so on.
 
-<div id="OBX.2"/><h3>OBX.2 - Value Type</h3>
+<div id="OBR.NTE.3"/><h3>NTE.3 - Comment</h3>
+This field contains the relevant message that needs to be communicate to the lab.  Information transmitted is limited to general notes of a non-clinical nature.  Any supporting clinical information relevant to the performance of a test must be transmitted as Ask At Order Enter (AOE) question responses in OBX segments or in the designated DG1 and OBR segments.
 
-<div id="OBX.3.1"/><h3>OBX.3.1 - Observation Identifier (LOINC)</h3>
+<div id="DG1"/><h2>DG1 - Diagnosis Segment</h2>
+The DG1 segment contains patient diagnose information of various types, for example, primary, etc.  The DG1 segment is used to send multiple diagnoses for the patient for whom test are being ordered.  The DG1 segment is required, but may be empty.  If the patient diagnoses are known by the sending system, the DG1 segment(s) must be populated.  In the case of third-party billing, diagnosis information is typically required to be submitted in order for the payer to process a claim.  In other cases (e.g. patient bill or client bill), diagnosis information may not generally be needed, but could be important for certain tests.
+<br/>
+The sending system must provide as many diagnoses (in multiple DG1 segments) as deemed necessary for the lab test.  The ordering system must indicate the priority of each included diagnosis (e.g. primary or secondary).
+<div id="DG1.1"/><h3>DG1.1 - Diagnosis Set ID</h3>
+An integer set identifier that increments by 1 for each DG1 segment sent that relates to an ordered test (i.e. OBR).  The first DG1 segment related to an ordered test must have a Set ID value of "1".  The set ID of the second DG1 segment must have a value of "2", and so on.
+
+<div id="DG1.3.1"/><h3>DG1.3.1 - Diagnosis Code</h3>
+The ordering system must provide a diagnosis code and diagnosis description that can support the reimbursement for lab services when a lab test is paid for by a third-party payer and the ordering system has a record of the diagnosis code. Either the lCD-9 or lCD-10 coding system shall be used to identify the patient’s diagnosis. Only a single diagnosis code may be provided for a given diagnosis (i.e., either the lCD-9 identifier or the lCD-10 identifier may be sent, not both).  The diagnosis code must be part of the code system specified in DG1.3.3.
+
+<div id="DG1.4"/><h3>DG1.3.2 - Diagnosis Code Description</h3>
+Diagnosis description that applies to the diagnosis code specified in DG1.3.1.
+
+<div id="DG1.3.3"/><h3>DG1.3.3 - Diagnosis Code System</h3>
+Diagnosis Code System that applies to the code specified in DG1.3.1.
+
+<br/><br/>
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>I9C</td>
+	<td>ICD-9 CM</u></td>
+	</tr>
+	<tr>
+	<td>I10C</td>
+	<td>ICD-10 CM</u></td>
+	</tr>
+	</table>
+<div id="DG1.6"/><h3>DG1.6 - Diagnosis Type</h3>
+The ordering system shall indicate whether the diagnosis type is "W" (working) or "F" (final). A 'working' diagnosis is a presumptive diagnosis that has not yet been established, whereas a 'final' diagnosis has been established.
+
+<br/><br/>
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>W</td>
+	<td>Working, presumptive diagnosis that has not yet been established</u></td>
+	</tr>
+	<tr>
+	<td>F</td>
+	<td>Final, established diagnosis.</u></td>
+	</tr>
+	</table>
+
+<div id="DG1.15"/><h3>DG1.15 - Diagnosis Priority</h3>
+If available, the ordering system must indicate the priority (e.g., primary, secondary, etc.) of the diagnosis indicated in the DG1.3.1 Diagnosis Code field.  Primary diagnoses have the value "1", secondary diagnoses have the value "2", and unranked diagnoses have the value "0".
+
+<br/><br/>
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>0</td>
+	<td>Not included in diagnosis ranking</u></td>
+	</tr>
+	<tr>
+	<td>1</td>
+	<td>The primary diagnosis</u></td>
+	</tr>
+	<tr>
+	<td>2</td>
+	<td>For ranked secondary diagnoses</u></td>
+	</tr>
+	</table>
+	
+<div id="OBR.OBX"/><h2>OBX - Order Observation Segment (Ask At Order Entry Questions)</h2>
+In general, the OBX segment is used in an HL7 message to transmit a single observation or observation fragment that provides clinical context.  For the purposes of the Order message, OBX segments are specifically and solely used to report response to ask at order entry (AOE) question.  When AOE response are applicable to an ordered test, each AOE response is transmitted as an individual OBX segment beneath the OBR segment that specifies the corresponding test order.  IF an ordered test does not have any associated AOE questions, the OBX segment should not be sent.  Multiple OBX segment may be included for an ordered test to support those tests with multiple AOE questions.
+<b>NOTE: </b>The OBX segment has a different function for order and result messages.
+
+<div id="OBR.OBX.1"/><h3>OBX.1 - Order Set ID</h3>
+This field must be populated with an integer that enumerates the AOE question response(s) for a specific test order (ORC/OBR combination).  Multiple OBX segments can be sent that relate to a single test order and should follow the OBR segment which for which they correspond.
+The first OBX segment related to an ordered test must have a Set ID value of "1", the Set ID of the second OBX segment must have a value of "2", and so on.
+
+<div id="OBR.OBX.2"/><h3>OBX.2 - Order Value Type</h3>
+This field contains the data type of the AOE question response value sent in OBX.5.  The value sent in this field must correspond to the response data type for the AOE question response listed in the PAML Test Directory.  If no data type is specified in the test directory, then the default value of "ST" (string date) should be used.
+
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>CE</td>
+	<td>Coded Element</u></td>
+	</tr>
+	<tr>
+	<td>DT</td>
+	<td>Date</u></td>
+	</tr>
+	<tr>
+	<td>NM</td>
+	<td>Numeric</u></td>
+	</tr>
+	<tr>
+	<td>SN</td>
+	<td>Structured Numeric</u></td>
+	</tr>
+	<tr>
+	<td>ST</td>
+	<td>String Data</u></td>
+	</tr>
+	<tr>
+	<td>TM</td>
+	<td>Time</u></td>
+	</tr>
+	<tr>
+	<td>TS</td>
+	<td>Timestamp</u></td>
+	</tr>
+	<tr>
+	<td>TX</td>
+	<td>Text Data</u></td>
+	</tr>
+	<tr>
+	<td>FT</td>
+	<td>Formatted Text</u></td>
+	</tr>
+	</table>
+	
+<div id="OBR.OBX.3.1"/><h3>OBX.3.1 - Order Observation Identifier</h3>
+AOE identifier for the AOE question.  The value sent in the Identifier component (OBX.3.1) of this filed must correspond to the AOE question identifier from the PAML Test Directory.
+<div id="OBR.OBX.3.2"/><h3>OBX.3.2 - Order Observation Description</h3>
+This field must contain the text of the AOE question from the PAML Test Directory.
+<div id="OBR.OBX.5"/><h3>OBX.5 - Order Observation Value</h3>
+This filed must contain the value of the AOE question response.  The value of the AOE question response must be consistent with the data type sent in the OBX.2 Value Type field.  For example, if the value type in OBX.2 is "DT" (date), the the value of OBX.5 must be a valid HL7 formatted date (e.g. "20130109").
+<br/>
+<b>NOTE: </b>Do not include units of measure in this field.  Units of measure should be specified in OBX.6.
+<div id="OBR.OBX.6.1"/><h3>OBX.6.1 - Order Units</h3>
+If the AOE question response can have units of measure associated with a value send in OBX.5 Observation Value, then this field may be used to indicate the applicable units.
+<div id="OBR.OBX.11"/><h3>OBX.11 - Order Observation Status</h3>
+This field must be populated with the value of "F" for final.
+<br/>
+	Values:
+	<table border="1">
+	<tr>
+	<th>Value</th>
+	<th>Description</th>
+	</tr>
+	<tr>
+	<td>F</td>
+	<td>Final</u></td>
+	</tr>
+	</table>
+	
+<div id="OBX"/><h2>OBX - Result Observation Segment</h2>
+
+<div id="OBX.1"/><h3>OBX.1 - Result Set ID</h3>
+
+<div id="OBX.2"/><h3>OBX.2 - Result Value Type</h3>
+
+<div id="OBX.3.1"/><h3>OBX.3.1 - Result Observation Identifier (LOINC)</h3>
 LOINC result code.
 
-<div id="OBX.3.2"/><h3>OBX.3.2 - Observation (Result) Description</h3>
+<div id="OBX.3.2"/><h3>OBX.3.2 - Result Observation (Result) Description</h3>
 Result description.
 
-<div id="OBX.5"/><h3>OBX.5 - Observation Value (Result)</h3>
+<div id="OBX.5"/><h3>OBX.5 - Result Observation Value (Result)</h3>
 Result value.
 
-<div id="OBX.6.1"/><h3>OBX.6.1 - Units</h3>
+<div id="OBX.6.1"/><h3>OBX.6.1 - Result Units</h3>
 Result units.
 
-<div id="OBX.7"/><h3>OBX.7 - Reference Range</h3>
+<div id="OBX.7"/><h3>OBX.7 - Result Reference Range</h3>
 Result reference range.
 
-<div id="OBX.8"/><h3>OBX.8 - Abnormal Flags</h3>
+<div id="OBX.8"/><h3>OBX.8 - Result Abnormal Flags</h3>
 Result abnormal flags.
 
-<div id="OBX.11"/><h3>OBX.11 - Observation (Result) Status</h3>
+<div id="OBX.11"/><h3>OBX.11 - Result Observation Status</h3>
 	Values:
 	<table border="1">
 	<tr>
@@ -967,10 +1657,10 @@ Result abnormal flags.
 	</tr>
 	</table>
 
-<div id="OBX.15.1"/><h3>OBX.15.1 - Performing Laboratory Identifier (CLIA Code)</h3>
+<div id="OBX.15.1"/><h3>OBX.15.1 - Result Performing Laboratory Identifier (CLIA Code)</h3>
 Performing laboratory identifier.  This is the CLIA number of the performing laboratory.
 
-<div id="OBX.15.2"/><h3>OBX.15.2 - Performing Laboratory Name and Address</h3>
+<div id="OBX.15.2"/><h3>OBX.15.2 - Result Performing Laboratory Name and Address</h3>
 Performing laboratory name and address.
 	
 <br/><br/><br/><br/><br/><br/><br/>
